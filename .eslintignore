@@ -1,0 +1,6 @@
+node_modules
+/.vscode
+
+# 強制檢查
+!.eslintrc.js
+!.stylelintrc.js
