@@ -12,7 +12,28 @@
   "eslint.alwaysShowStatus": true,
   // tell the ESLint plugin to run on save
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
+
+  // stylelint settings
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.config": {
+    "rules": {
+      "at-rule-no-unknown": [true, {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "layer",
+          "variants",
+          "responsive",
+          "screen"
+        ]
+      }],
+    }
+  },
+  
   "blueprint.templatesPath": [".vscode/blueprint-templates"]
 }

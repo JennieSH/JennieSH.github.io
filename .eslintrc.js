@@ -5,12 +5,11 @@ module.exports = {
     node: true
   },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
-    'prettier'
+    "@nuxtjs/eslint-config-typescript",
+    "plugin:nuxt/recommended",
+    "plugin:prettier/recommended"
   ],
-  plugins: [
-  ],
+  plugins: ["prettier"],
   // add your custom rules here
   rules: {
     "no-console": "off",
@@ -20,37 +19,37 @@ module.exports = {
       "PascalCase",
       {
         registeredComponentsOnly: false,
-        ignores: ["/^router-/", "/^keep-/", "/^transition-/"],
-      },
+        ignores: ["/^router-/", "/^keep-/", "/^transition-/"]
+      }
     ],
     "vue/custom-event-name-casing": [
       "error",
       "kebab-case",
       {
-        ignores: [],
-      },
+        ignores: []
+      }
     ],
     "vue/html-comment-content-newline": [
       "warn",
       {
         singleline: "ignore",
-        multiline: "always",
-      },
+        multiline: "always"
+      }
     ],
     "vue/html-comment-content-spacing": [
       "warn",
       "always",
       {
-        exceptions: [],
-      },
+        exceptions: []
+      }
     ],
     "vue/html-comment-indent": ["warn", 2],
     "vue/no-template-target-blank": [
       "warn",
       {
         allowReferrer: true,
-        enforceDynamicLinks: "always",
-      },
+        enforceDynamicLinks: "always"
+      }
     ],
     "vue/padding-line-between-blocks": ["warn", "always"],
     "vue/v-on-event-hyphenation": [
@@ -58,15 +57,15 @@ module.exports = {
       "always",
       {
         autofix: true,
-        ignore: [],
-      },
+        ignore: []
+      }
     ],
     "vue/v-on-function-call": [
       "error",
       "never",
       {
-        ignoreIncludesComment: false,
-      },
+        ignoreIncludesComment: false
+      }
     ],
     "vue/html-indent": [
       "warn",
@@ -79,5 +78,26 @@ module.exports = {
         ignores: []
       }
     ],
-  },
-}
+
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    indent: [
+      "error",
+      2,
+      {
+        SwitchCase: 1,
+        ignoredNodes: ["ConditionalExpression"]
+      }
+    ],
+    "max-len": ["error", { code: 200 }],
+    "comma-dangle": [2, "only-multiline"],
+    "space-before-function-paren": [
+      "error",
+      {
+        anonymous: "ignore",
+        named: "ignore",
+        asyncArrow: "always"
+      }
+    ]
+  }
+};
