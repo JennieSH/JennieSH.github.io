@@ -98,6 +98,16 @@ module.exports = {
         named: "ignore",
         asyncArrow: "always"
       }
-    ]
-  }
+    ],
+    "newline-after-var": ["error", "always"],
+    "newline-before-return": "error"
+  },
+  overrides: [
+    {
+      files: ["*.vue"],
+      rules: {
+        "vue/html-indent": "off"
+      }
+    }
+  ]
 };

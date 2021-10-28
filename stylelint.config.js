@@ -10,8 +10,32 @@ module.exports = {
   rules: {
     "property-no-vendor-prefix": null,
     "value-no-vendor-prefix": null,
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
+    "at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          "extends",
+          "tailwind",
+          "screen",
+          "apply",
+          "variants",
+          "responsive"
+        ]
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          "extends",
+          "tailwind",
+          "screen",
+          "apply",
+          "variants",
+          "responsive"
+        ]
+      }
+    ],
     "selector-max-id": null,
     "order/properties-alphabetical-order": null,
     "string-quotes": "double",
@@ -100,7 +124,8 @@ module.exports = {
     "no-empty-source": null,
     "no-descending-specificity": null,
     "selector-max-compound-selectors": null,
-    "scss/at-import-partial-extension-blacklist": null
+    "scss/at-import-partial-extension-blacklist": null,
+    "function-parentheses-space-inside": "never-single-line"
   },
   ignoreFiles: [".vscode/**", "dist/**", "node_modules/**"]
 };
