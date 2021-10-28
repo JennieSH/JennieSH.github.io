@@ -1,3 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "./style//transition";
+@import "./style/font";
+
+* {
+  font-family: "DM Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.app {
+  @apply flex flex-col justify-between min-h-screen;
+}
+
+.container {
+  @apply mx-auto flex-grow;
+}
