@@ -15,12 +15,16 @@
         >
           <NuxtLink :to="{ name: routeName }">{{ routeName }}</NuxtLink>
         </li>
-        <ThemeSwitch />
+        <ThemeSwitch class="ml-1" />
       </ul>
 
       <!-- Mobile Menu -->
       <Transition name="slide">
         <ul v-show="isMenuOpen" class="nav-mb">
+          <li class="logo logo-mb">
+            <NuxtLink to="/">Jennie's Note</NuxtLink>
+            <ThemeSwitch class="ml-2" />
+          </li>
           <li
             v-for="routeName in routeList"
             :key="routeName"
@@ -76,9 +80,17 @@ export default defineComponent({
 <style lang="scss" scoped>
 header {
   @apply flex justify-between items-center p-4 md:px-16;
+}
 
-  .logo {
-    @apply text-light-black text-2xl font-bold dark:text-white;
+.logo {
+  @apply text-light-black text-2xl font-bold dark:text-white;
+
+  &-mb {
+    @apply flex justify-center items-center;
+  }
+
+  > a {
+    @apply text-light-primary dark:text-dark-primary;
   }
 }
 
@@ -118,17 +130,17 @@ header {
   @apply relative w-8 h-8 cursor-pointer duration-1000 md:hidden;
 
   .line {
-    @apply absolute top-[14px] w-8 h-1 bg-yellow-500 rounded duration-500 delay-500 dark:bg-dark-primary;
+    @apply absolute top-[14px] w-8 h-1 bg-yellow-500 rounded duration-500 delay-500 dark:bg-dark-white;
 
     &::before {
-      @apply absolute top-[-12px] w-8 h-1 bg-light-red rounded duration-500 dark:bg-dark-primary;
+      @apply absolute top-[-12px] w-8 h-1 bg-light-red rounded duration-500 dark:bg-dark-white;
 
       content: "";
       transition: transform 0.5s, top 0.5s 0.5s;
     }
 
     &::after {
-      @apply absolute top-[12px] w-8 h-1 bg-light-blue rounded duration-500 dark:bg-dark-primary;
+      @apply absolute top-[12px] w-8 h-1 bg-light-blue rounded duration-500 dark:bg-dark-white;
 
       content: "";
       transition: transform 0.5s, top 0.5s 0.5s;
