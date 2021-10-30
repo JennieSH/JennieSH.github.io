@@ -15,7 +15,7 @@
         >
           <NuxtLink :to="{ name: routeName }">{{ routeName }}</NuxtLink>
         </li>
-        <ModeSwitch />
+        <ThemeSwitch />
       </ul>
 
       <!-- Mobile Menu -->
@@ -86,7 +86,7 @@ header {
   @apply hidden md:flex;
 
   li {
-    @apply mx-1 w-16 text-center rounded-full hover:text-light-primary dark:text-dark-gray dark:hover:text-dark-primary;
+    @apply mx-1 w-16 text-center border-b-2 border-transparent hover:text-light-primary dark:text-dark-gray dark:hover:text-dark-primary;
 
     text-transform: capitalize;
   }
@@ -96,9 +96,7 @@ header {
   }
 
   .active {
-    @apply text-light-primary dark:text-dark-primary dark:font-bold dark:bg-none;
-
-    background-image: linear-gradient(transparent 50%, #f1f1f1 50%);
+    @apply font-bold text-light-primary border-gray-200 dark:text-dark-primary;
   }
 }
 
