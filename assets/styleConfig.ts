@@ -10,11 +10,16 @@ const colors = {
     red: "#EE6E73"
   },
   dark: {
-    bg: "#222222",
-    primary: "#979797",
-    secondary: "#363636",
-    icon: "#C9C9C9",
-    link: "#D4D4D8"
+    primary: "#ffd478",
+    secondary: "#d5d5d5",
+    bg: "#1E1F25",
+    black: "#131417",
+    white: "#fefefe",
+    gray: "#A9A9A9",
+    blue: "#77aad5",
+    pink: "#f68d8c",
+    red: "#EE6E73",
+    green: "#a7d3a9"
   }
 };
 
