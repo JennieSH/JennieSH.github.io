@@ -10,7 +10,7 @@
           v-for="routeName in routeList"
           :key="routeName"
           :class="{
-            active: routeName === activeRoute
+            active: routeName === activeSubRouteName
           }"
         >
           <NuxtLink :to="{ name: routeName }">{{ routeName }}</NuxtLink>
@@ -29,7 +29,7 @@
             v-for="routeName in routeList"
             :key="routeName"
             :class="{
-              active: routeName === activeRoute
+              active: routeName === activeSubRouteName
             }"
           >
             <NuxtLink :to="{ name: routeName }" @click.native="toggleMenu">
@@ -40,14 +40,13 @@
       </Transition>
 
       <!-- Mobile Burger -->
-      <div
-        class="burger-icon"
-        :class="{
-          open: isMenuOpen
-        }"
-        @click="toggleMenu"
-      >
-        <div class="line"></div>
+      <div class="burger-icon" @click="toggleMenu">
+        <div
+          class="burger-line"
+          :class="{
+            open: isMenuOpen
+          }"
+        ></div>
       </div>
     </nav>
   </header>
@@ -60,17 +59,17 @@ import Routes from "@/types/routes";
 
 export default defineComponent({
   setup() {
+    const routeList = [Routes.DEVELOPMENT, Routes.LIFE, Routes.ABOUT];
+
     const route = useRoute();
     const { isMenuOpen, toggleMenu } = useNav();
 
-    const routeList = [Routes.DEVELOPMENT, Routes.LIFE, Routes.ABOUT];
-
-    const activeRoute = computed(() => route.value.name);
+    const activeSubRouteName = computed(() => route.value.name!.split("-")[0]);
 
     return {
       isMenuOpen,
       routeList,
-      activeRoute,
+      activeSubRouteName,
       toggleMenu
     };
   }
@@ -83,14 +82,14 @@ header {
 }
 
 .logo {
-  @apply text-light-black text-2xl font-bold dark:text-white;
+  @apply text-2xl font-bold text-light-title dark:text-dark-title;
 
   &-mb {
     @apply flex justify-center items-center;
-  }
 
-  > a {
-    @apply text-light-primary dark:text-dark-primary;
+    a {
+      @apply text-light-primary dark:text-dark-primary;
+    }
   }
 }
 
@@ -98,7 +97,7 @@ header {
   @apply hidden md:flex;
 
   li {
-    @apply mx-1 w-16 text-center border-b-2 border-transparent hover:text-light-primary dark:text-dark-gray dark:hover:text-dark-primary;
+    @apply mx-1 w-16 text-center border-b-2 border-transparent dark:text-dark-gray hover:text-light-primary dark:hover:text-dark-primary;
 
     text-transform: capitalize;
   }
@@ -108,7 +107,7 @@ header {
   }
 
   .active {
-    @apply font-bold text-light-primary border-gray-200 dark:text-dark-primary;
+    @apply font-bold  border-gray-200 text-light-primary dark:text-dark-primary;
   }
 }
 
@@ -116,7 +115,7 @@ header {
   @apply absolute left-0 top-0 z-10 h-full w-4/5 p-8 bg-gray-50 md:hidden dark:bg-black;
 
   li {
-    @apply mb-2 pl-2 border-l-4 border-transparent hover:text-light-primary dark:text-dark-secondary dark:hover:text-dark-primary;
+    @apply mb-2 pl-2 border-l-4 border-transparent hover:text-light-primary dark:hover:text-dark-primary;
 
     text-transform: capitalize;
   }
@@ -126,42 +125,51 @@ header {
   }
 }
 
-.burger-icon {
-  @apply relative w-8 h-8 cursor-pointer duration-1000 md:hidden;
+%line-base {
+  @apply absolute w-8 h-1 rounded  duration-500;
+}
 
-  .line {
-    @apply absolute top-[14px] w-8 h-1 bg-yellow-500 rounded duration-500 delay-500 dark:bg-dark-white;
+.burger {
+  &-icon {
+    @apply relative w-8 h-8 cursor-pointer duration-1000 md:hidden;
+  }
+
+  &-line {
+    @apply top-[14px] delay-500 bg-yellow-500 dark:bg-dark-primary;
+
+    @extend %line-base;
 
     &::before {
-      @apply absolute top-[-12px] w-8 h-1 bg-light-red rounded duration-500 dark:bg-dark-white;
+      @apply top-[-12px] bg-light-red dark:bg-dark-primary;
+
+      @extend %line-base;
 
       content: "";
       transition: transform 0.5s, top 0.5s 0.5s;
     }
 
     &::after {
-      @apply absolute top-[12px] w-8 h-1 bg-light-blue rounded duration-500 dark:bg-dark-white;
+      @apply top-[12px] bg-light-blue dark:bg-dark-primary;
+      @extend %line-base;
 
       content: "";
       transition: transform 0.5s, top 0.5s 0.5s;
     }
   }
 
-  &.open {
-    .line {
-      @apply duration-100 delay-500 bg-transparent;
-    }
+  &-line.open {
+    @apply duration-100 delay-500 bg-transparent;
 
-    .line::before {
+    &::before {
       @apply top-0 -rotate-45 bg-light-primary dark:bg-dark-primary;
 
       transition: top 0.5s, transform 0.5s 0.5s;
     }
 
-    .line::after {
+    &::after {
       @apply top-0 rotate-45 bg-light-primary dark:bg-dark-primary;
 
-      transition: top 0.4s, transform 0.5s 0.5s;
+      transition: top 0.5s, transform 0.5s 0.5s;
     }
   }
 }

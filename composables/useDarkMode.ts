@@ -37,8 +37,6 @@ const useDarkMode = () => {
     () => {
       if (process.server) return;
 
-      console.log("toggleThemeMode");
-
       if (isDarkMode.value) {
         document.documentElement.classList.add("dark");
         setLocalItem(THEME_STORAGE_KEY, Theme.DARK);

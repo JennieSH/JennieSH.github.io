@@ -1,9 +1,6 @@
 <template>
   <div class="mode-switch" @click="toggleThemeMode">
-    <span v-show="isDarkMode" class="moon">
-      <span class="moon-inner"></span>
-    </span>
-
+    <SvgIcon v-show="isDarkMode" class="moon" name="moon" />
     <span v-show="!isDarkMode" class="sun"></span>
   </div>
 </template>
@@ -26,23 +23,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$sun: #ffd501;
+
 .mode-switch {
-  > span {
-    @apply inline-block w-6 h-6 ml-1 rounded-full;
-  }
+  @apply w-6 h-6;
 
   .sun {
-    @apply bg-yellow-300;
+    @apply inline-block w-full h-full rounded-full bg-yellow-300;
 
-    box-shadow: 0 0 4px 1px #ffd501;
+    box-shadow: 0 0 4px 1px $sun;
   }
 
   .moon {
-    @apply relative  bg-gray-200 overflow-visible;
-
-    &-inner {
-      @apply absolute block h-4 w-4 bg-dark-black rounded-full top-[4px] left-[-5px];
-    }
+    @apply w-full h-full text-gray-200;
   }
 }
 </style>

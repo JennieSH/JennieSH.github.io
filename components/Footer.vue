@@ -18,6 +18,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 footer {
-  @apply py-8 text-light-secondary flex justify-center items-center;
+  @apply py-4 flex justify-center items-center;
 }
 </style>

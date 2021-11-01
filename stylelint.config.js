@@ -14,10 +14,11 @@ module.exports = {
       true,
       {
         ignoreAtRules: [
-          "extends",
+          "extend",
           "tailwind",
           "screen",
           "apply",
+          "layer",
           "variants",
           "responsive"
         ]
@@ -27,10 +28,11 @@ module.exports = {
       true,
       {
         ignoreAtRules: [
-          "extends",
+          "extend",
           "tailwind",
           "screen",
           "apply",
+          "layer",
           "variants",
           "responsive"
         ]

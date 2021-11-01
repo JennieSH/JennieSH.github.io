@@ -1,0 +1,17 @@
+@import "./transition";
+@import "./font";
+
+* {
+  font-family: "DM Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.app {
+  @apply flex flex-col justify-between min-h-screen text-light-text dark:text-dark-text dark:bg-dark-bg;
+
+  transition: background-color 0.5s ease-in-out;
+}
+
+.container {
+  @apply mx-auto flex-grow;
+}
