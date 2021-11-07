@@ -29,5 +29,22 @@
     }
   },
   
-  "blueprint.templatesPath": [".vscode/blueprint-templates"]
+  "blueprint.templatesPath": [
+    ".vscode/blueprint-templates"
+  ],
+
+  "cSpell.words": [
+    "hljs",
+    "nuxt",
+    "tailwindcss"
+  ],
+  "cSpell.ignorePaths": [
+    "node_modules",        // this will ignore anything the node_modules directory
+    ".vscode/**",    
+    ".git",                // Ignore the .git directory
+    "package.json",
+    "tsconfig.json",
+    "nuxt.config.js",
+    "*.md",
+],
 }
