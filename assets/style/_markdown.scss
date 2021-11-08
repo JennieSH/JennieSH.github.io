@@ -1,0 +1,62 @@
+.markdown {
+  @apply leading-relaxed max-w-3xl text-sm 2xl:max-w-4xl;
+
+  h1 {
+    @apply text-center text-light-title dark:text-dark-title;
+  }
+
+  h2 {
+    @apply mt-6 mb-4 relative;
+
+    &::before {
+      @apply absolute left-[-16px] text-light-active;
+
+      content: "»";
+    }
+
+    a {
+      @apply text-light-text dark:text-dark-text;
+    }
+  }
+
+  h6 {
+    // tags
+    @apply hidden;
+  }
+
+  a {
+    @apply text-dark-active  hover:border-b hover:border-light-active;
+  }
+
+  img {
+    @apply mx-auto my-4 w-10/12;
+  }
+
+  pre {
+    @apply my-4 p-4 whitespace-pre-line;
+  }
+
+  p {
+    @apply my-3 leading-6;
+
+    > code {
+      @apply px-1 py-[2px] text-gray-500 bg-gray-100 rounded-md;
+    }
+  }
+
+  li {
+    @apply pl-2 py-1 list-disc list-inside;
+
+    p {
+      @apply inline;
+    }
+  }
+
+  blockquote {
+    @apply my-4 px-4 py-2 text-gray-500 bg-[#EEEEEE] border-l-4 border-[#666666] rounded;
+
+    code {
+      @apply bg-gray-50;
+    }
+  }
+}

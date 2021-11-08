@@ -29,3 +29,14 @@
 .slide-leave-to {
   transform: translateX(-100%);
 }
+
+.slide-reverse-enter-active,
+.slide-reverse-leave-active {
+  transform: translateX(0%);
+  transition: all 1.5s ease-in-out;
+}
+
+.slide-reverse-enter,
+.slide-reverse-leave-to {
+  transform: translateX(100%);
+}

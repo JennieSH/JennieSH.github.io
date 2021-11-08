@@ -1,5 +1,6 @@
 @import "./transition";
 @import "./font";
+@import "./markdown";
 
 * {
   font-family: "DM Sans", sans-serif;
@@ -10,8 +11,34 @@
   @apply flex flex-col justify-between min-h-screen text-light-text dark:text-dark-text dark:bg-dark-bg;
 
   transition: background-color 0.5s ease-in-out;
+
+  ::selection {
+    @apply bg-dark-active bg-opacity-50 dark:bg-opacity-70;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply py-6 text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply py-1;
+  }
 }
 
+// override tailwind .container
 .container {
-  @apply mx-auto flex-grow;
+  @apply flex-grow mt-5 xl:max-w-5xl 2xl:max-w-7xl;
 }

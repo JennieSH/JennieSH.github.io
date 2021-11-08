@@ -1,8 +1,9 @@
 const colors = {
   light: {
-    primary: "#86C1CF",
+    primary: "#3CA2A2",
     secondary: "#71717A",
-    title: "#003543",
+    active: "#92C7A3",
+    title: "#215A6D",
     bg: "#FFFFFF",
     block: "#FAFAFA",
     text: "#27272A",
@@ -16,6 +17,7 @@ const colors = {
   dark: {
     primary: "#FFD478",
     secondary: "#d5d5d5",
+    active: "#92C7A3",
     title: "#FCFCFC",
     block: "#1E1F25",
     text: "#FFFFFF",

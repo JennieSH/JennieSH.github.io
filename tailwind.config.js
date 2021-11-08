@@ -12,6 +12,9 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     colors,
+    container: {
+      center: true
+    },
     extend: {
       fontFamily: {
         "dm-sans": ["DM Sans"]
