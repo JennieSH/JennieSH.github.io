@@ -38,18 +38,27 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "@nuxtjs/svg-sprite",
-    "@nuxtjs/markdownit"
+    "@nuxtjs/svg-sprite"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config) {
+      config.node = {
+        fs: "empty"
+      };
 
-  markdownit: {
-    injected: true,
-    use: ["markdown-it-highlightjs"]
+      config.module.rules.push({
+        test: /\.md/,
+        use: [
+          {
+            loader: "markdownit-loader"
+          }
+        ]
+      });
+    }
   }
 };
