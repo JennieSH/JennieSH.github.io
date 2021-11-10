@@ -15,30 +15,30 @@
   ::selection {
     @apply bg-dark-active bg-opacity-50 dark:bg-opacity-70;
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
-  }
-
-  h1 {
-    @apply py-6 text-2xl;
-  }
-
-  h2 {
-    @apply text-xl;
-  }
-
-  h3 {
-    @apply py-1;
-  }
 }
 
 // override tailwind .container
 .container {
   @apply flex-grow mt-5 xl:max-w-5xl 2xl:max-w-7xl;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply py-1;
 }

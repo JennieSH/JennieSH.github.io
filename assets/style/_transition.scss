@@ -40,3 +40,42 @@
 .slide-reverse-leave-to {
   transform: translateX(100%);
 }
+
+// animation
+@keyframes twinkle {
+  from {
+    box-shadow: inset -3px 0 0 rgb(255, 211, 17);
+  }
+
+  to {
+    box-shadow: inset -3px 0 0 transparent;
+  }
+}
+
+@keyframes swing {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
