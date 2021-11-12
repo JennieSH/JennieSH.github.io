@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, useRoute } from "@nuxtjs/composition-api";
-import useArticle from "~/composables/useArticle";
+import useArticle from "@/composables/useArticle";
 
 export default defineComponent({
   setup() {

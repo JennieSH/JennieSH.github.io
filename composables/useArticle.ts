@@ -2,10 +2,11 @@ import { useAsync } from "@nuxtjs/composition-api";
 import {
   concatPath,
   getSubjectData,
-  getAllArticleMatter
+  getAllArticleMatter,
+  getArticleData
 } from "@/utils/parser";
 
-const useArticle = (category: string, subject?: string) => {
+const useArticle = (category: string, subject?: string, article?: string) => {
   const root = `${process.cwd()}/contents`;
 
   const subjectData = useAsync(() => {
@@ -24,9 +25,20 @@ const useArticle = (category: string, subject?: string) => {
     return [];
   });
 
+  const articleMatter = useAsync(() => {
+    if (subject && article) {
+      const articlePath = concatPath([root, category, subject, article], ".md");
+
+      return getArticleData(articlePath);
+    }
+
+    return null;
+  });
+
   return {
     subjectData,
-    articleMatterList
+    articleMatterList,
+    articleMatter
   };
 };
 
