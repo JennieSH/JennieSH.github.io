@@ -13,6 +13,7 @@
 <script lang="ts">
 import { defineComponent, computed, useRoute } from "@nuxtjs/composition-api";
 import useArticle from "@/composables/useArticle";
+import useMetaHelper from "@/composables/useMetaHelper";
 
 export default defineComponent({
   setup() {
@@ -25,12 +26,15 @@ export default defineComponent({
       subject.value
     );
 
+    useMetaHelper(subject);
+
     return {
       subjectData,
       subject,
       articleMatterList
     };
-  }
+  },
+  head: {}
 });
 </script>
 
