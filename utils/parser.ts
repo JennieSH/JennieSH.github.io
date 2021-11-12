@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
-import { SubjectData } from "@/types/content";
+import matter from "gray-matter";
+import { FrontMatter, SubjectData, BasicInfo } from "@/types/content";
 
 /**
  * @example
@@ -11,6 +12,19 @@ const concatPath = (paths: string[], suffix?: string): string => {
   const tempPath = paths.reduce((pre, cur) => path.join(pre, cur), "");
 
   return suffix ? `${tempPath}${suffix}` : tempPath;
+};
+
+/**
+ * get front-matter from markdown file
+ */
+const getFrontMatter = (articlePath: string): FrontMatter => {
+  const articleData = fs.readFileSync(articlePath, "utf-8");
+  const { data, content } = matter(articleData);
+
+  return {
+    info: data,
+    content
+  };
 };
 
 /**
@@ -39,4 +53,15 @@ const getSubjectData = (categoryPath: string): SubjectData[] => {
   return categoryData;
 };
 
-export { concatPath, getSubjectData };
+const getAllArticleMatter = (subjectPath: string): BasicInfo[] => {
+  const articleMatterList = getDirData(subjectPath).map((fileName) => {
+    const articlePath = concatPath([subjectPath, fileName]);
+    const { info } = getFrontMatter(articlePath);
+
+    return info;
+  });
+
+  return articleMatterList;
+};
+
+export { concatPath, getSubjectData, getAllArticleMatter };
