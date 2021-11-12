@@ -19,8 +19,8 @@
     }
   }
 
+  // tags
   h6 {
-    // tags
     @apply hidden;
   }
 
@@ -33,7 +33,7 @@
   }
 
   pre {
-    @apply my-4 p-4 whitespace-pre-line;
+    @apply my-4 p-4 whitespace-pre-wrap rounded;
   }
 
   p {
@@ -52,11 +52,45 @@
     }
   }
 
-  blockquote {
-    @apply my-4 px-4 py-2 text-alert-gary-text bg-alert-gary-bg border-l-4 border-alert-gary-border rounded;
+  // alert area
+  %alert-block {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid;
+    border-radius: 0.25rem;
+  }
 
-    code {
-      @apply bg-alert-gary-text bg-opacity-20;
-    }
+  blockquote {
+    @apply text-alert-gary-text bg-alert-gary-bg  border-alert-gary-border;
+
+    @extend %alert-block;
+  }
+
+  .success {
+    @apply text-[#33691E] bg-[#CAD9C0] border-[#7F8D7C];
+
+    @extend %alert-block;
+  }
+
+  .info {
+    @apply text-[#536483] bg-[#C8DAE9] border-[#4F728A];
+
+    @extend %alert-block;
+  }
+
+  .warning {
+    @apply text-[#93732F] bg-[#F8F0D2] border-[#D3AE5B];
+
+    @extend %alert-block;
+  }
+
+  .danger {
+    @apply text-[#A44A43] bg-[#F1DEDF] border-[#D59DA4];
+
+    @extend %alert-block;
+  }
+
+  .spoiler > p {
+    @apply ml-4;
   }
 }

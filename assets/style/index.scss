@@ -19,7 +19,7 @@
 
 // override tailwind .container
 .container {
-  @apply flex-grow mt-5 xl:max-w-5xl 2xl:max-w-7xl;
+  @apply flex-grow xl:max-w-5xl 2xl:max-w-7xl;
 }
 
 h1,
