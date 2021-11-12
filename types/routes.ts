@@ -1,7 +1,8 @@
 enum Routes {
-  DEVELOPMENT = "dev",
-  LIFE = "life",
-  ABOUT = "about"
+  HOME = "/",
+  ABOUT = "/",
+  DEVELOPMENT = "/dev",
+  LIFE = "/life"
 }
 
 export default Routes;
