@@ -64,7 +64,7 @@ module.exports = {
       "margin",
       "margin-top",
       "margin-right",
-      "margin-bogttom",
+      "margin-bottom",
       "margin-left",
       "padding",
       "padding-top",
