@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="logo">
-      <h1><NuxtLink to="/">Jennie's Note</NuxtLink></h1>
+      <h1><NuxtLink to="/">Jennie DEV</NuxtLink></h1>
     </div>
     <nav>
       <!-- PC Menu -->
@@ -23,7 +23,7 @@
       <Transition name="slide">
         <ul v-show="isMenuOpen" class="nav-mb">
           <li class="logo logo-mb">
-            <NuxtLink to="/" @click.native="toggleMenu">Jennie's Note</NuxtLink>
+            <NuxtLink to="/" @click.native="toggleMenu">Jennie DEV</NuxtLink>
             <ThemeSwitch class="ml-2" />
           </li>
           <li
