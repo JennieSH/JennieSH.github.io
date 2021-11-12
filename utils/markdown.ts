@@ -1,26 +1,8 @@
 import type MarkdownItType from "markdown-it";
 
 import MarkdownIt from "markdown-it";
-import hljs from "highlight.js/lib/core";
-
-// highlight langue
-import bash from "highlight.js/lib/languages/bash";
-import javascript from "highlight.js/lib/languages/javascript";
-import typescript from "highlight.js/lib/languages/typescript";
-import json from "highlight.js/lib/languages/json";
-import yaml from "highlight.js/lib/languages/yaml";
-import xml from "highlight.js/lib/languages/xml";
-import css from "highlight.js/lib/languages/css";
-import shell from "highlight.js/lib/languages/shell";
-
-hljs.registerLanguage("bash", bash);
-hljs.registerLanguage("javascript", javascript);
-hljs.registerLanguage("typescript", typescript);
-hljs.registerLanguage("json", json);
-hljs.registerLanguage("yaml", yaml);
-hljs.registerLanguage("xml", xml);
-hljs.registerLanguage("css", css);
-hljs.registerLanguage("shell", shell);
+import MarkdownItContainer from "markdown-it-container";
+import hljs from "./hljs";
 
 const md: MarkdownItType = new MarkdownIt({
   html: true,
@@ -51,6 +33,30 @@ const md: MarkdownItType = new MarkdownIt({
       '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>"
     );
   }
-});
+})
+  .use(MarkdownItContainer, "success")
+  .use(MarkdownItContainer, "info")
+  .use(MarkdownItContainer, "warning")
+  .use(MarkdownItContainer, "danger")
+  .use(MarkdownItContainer, "spoiler", {
+    validate(params: string) {
+      return params.trim().match(/^spoiler\s+(.*)$/);
+    },
+    render(tokens: any[], idx: number) {
+      const m = tokens[idx].info.trim().match(/^spoiler\s+(.*)$/);
+
+      if (tokens[idx].nesting === 1) {
+        // opening tag
+        return (
+          "<details class='spoiler'><summary>" +
+          md.utils.escapeHtml(m[1]) +
+          "</summary>\n"
+        );
+      } else {
+        // closing tag
+        return "</details>\n";
+      }
+    }
+  });
 
 export default md;
