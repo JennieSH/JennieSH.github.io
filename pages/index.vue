@@ -20,9 +20,11 @@
           target="_blank"
           rel="noreferrer noopener"
           title="github"
+          class="inline-block"
         >
           <SvgIcon class="github" name="github" />
         </a>
+
         <p class="text-common-gray">90 % 開發筆記 + 10 % 生活雜記</p>
         <p>
           曾經看過一篇文章提及，如果對來自外部的訊息進行重新編碼，會在腦海中形成深刻的印象，愈是刻意學習，記憶會愈加持久。
@@ -67,7 +69,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .introduction {
-  @apply flex flex-col justify-center items-center mx-auto mt-16 md:flex-row;
+  @apply flex flex-col justify-center items-center mx-auto mt-12 md:mt-20 md:flex-row;
 
   &-img {
     @apply flex flex-col items-center justify-center mx-[10%];
@@ -81,11 +83,11 @@ export default defineComponent({
     @apply mt-6 px-10 md:mt-0;
 
     p {
-      @apply my-8 text-sm leading-relaxed;
+      @apply my-5 text-sm leading-relaxed;
     }
 
     .github {
-      @apply mt-4 w-7 h-7;
+      @apply mt-5 w-7 h-7;
     }
   }
 }
