@@ -55,14 +55,14 @@ main {
 }
 
 li {
-  @apply relative flex items-center border-l-4 border-light-border hover:border-light-active hover:text-light-active;
+  @apply relative flex items-center border-l-4 hover:border-common-active hover:text-common-active;
 
   a {
     @apply inline-block w-full py-4 pl-6 capitalize border-b border-dashed;
   }
 
   .dot {
-    @apply absolute left-[-8px] block w-3 h-3 rounded-full bg-gray-400;
+    @apply absolute left-[-8px] block w-3 h-3 rounded-full bg-light-gray dark:bg-dark-gray;
   }
 }
 </style>

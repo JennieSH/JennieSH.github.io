@@ -13,7 +13,7 @@
   transition: background-color 0.5s ease-in-out;
 
   ::selection {
-    @apply bg-dark-active bg-opacity-50 dark:bg-opacity-70;
+    @apply bg-common-active bg-opacity-50 dark:bg-opacity-70;
   }
 }
 

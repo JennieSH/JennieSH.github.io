@@ -93,7 +93,7 @@ header {
   @apply hidden md:flex;
 
   li {
-    @apply mx-1 w-16 text-center border-b-2 border-transparent dark:text-dark-gray hover:text-light-active dark:hover:text-dark-active;
+    @apply mx-1 w-16 text-center border-b-2 border-transparent dark:text-dark-gray hover:text-common-active dark:hover:text-common-active;
   }
 
   a {
@@ -109,7 +109,7 @@ header {
   @apply absolute left-0 top-0 z-10 h-full w-4/5 p-8 bg-gray-50 md:hidden dark:bg-black;
 
   li {
-    @apply mb-2 pl-2 border-l-4 border-transparent cursor-pointer hover:text-light-active dark:hover:text-dark-active;
+    @apply mb-2 pl-2 border-l-4 border-transparent cursor-pointer hover:text-common-active dark:hover:text-common-active;
   }
 
   .active {

@@ -65,7 +65,7 @@ section {
   }
 
   a {
-    @apply hover:text-light-active;
+    @apply hover:text-common-active;
   }
 
   .title {

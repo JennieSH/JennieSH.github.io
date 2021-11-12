@@ -2,20 +2,20 @@
   @apply leading-relaxed max-w-3xl text-sm 2xl:max-w-4xl;
 
   h1 {
-    @apply text-center text-light-title dark:text-dark-title;
+    @apply mt-6 mb-10 text-center text-light-title dark:text-dark-title;
   }
 
   h2 {
     @apply mt-6 mb-4 relative;
 
     &::before {
-      @apply absolute left-[-16px] text-light-active;
+      @apply absolute left-[-16px] text-common-active;
 
       content: "»";
     }
 
     a {
-      @apply text-light-text dark:text-dark-text;
+      @apply text-light-secondary dark:text-dark-secondary;
     }
   }
 
@@ -25,7 +25,7 @@
   }
 
   a {
-    @apply text-dark-active  hover:border-b hover:border-light-active;
+    @apply text-common-active  hover:border-b hover:border-common-active;
   }
 
   img {
@@ -53,10 +53,10 @@
   }
 
   blockquote {
-    @apply my-4 px-4 py-2 text-gray-500 bg-[#EEEEEE] border-l-4 border-[#666666] rounded;
+    @apply my-4 px-4 py-2 text-alert-gary-text bg-alert-gary-bg border-l-4 border-alert-gary-border rounded;
 
     code {
-      @apply bg-gray-50;
+      @apply bg-alert-gary-text bg-opacity-20;
     }
   }
 }

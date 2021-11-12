@@ -5,7 +5,7 @@
         <div>
           <img :src="Link.AVATAR" alt="personal-img" />
         </div>
-        <span class="text-[12px] text-gray-300">
+        <span class="text-[10px] text-gray-300">
           （圖片來源:
           <a :href="Link.AVATAR" target="_blank" rel="noreferrer noopener">
             Unsplash）
@@ -23,7 +23,7 @@
         >
           <SvgIcon class="github" name="github" />
         </a>
-        <p class="text-light-secondary">90 % 開發筆記 + 10 % 生活雜記</p>
+        <p class="text-common-gray">90 % 開發筆記 + 10 % 生活雜記</p>
         <p>
           曾經看過一篇文章提及，如果對來自外部的訊息進行重新編碼，會在腦海中形成深刻的印象，愈是刻意學習，記憶會愈加持久。
         </p>
@@ -36,14 +36,12 @@
 
     <ul class="category">
       <li>
-        <NuxtLink
-          :to="{ name: 'category', params: { category: Routes.DEVELOPMENT } }"
-        >
+        <NuxtLink :to="Routes.DEVELOPMENT" title="Dev - 程式開發相關筆記">
           <span>Dev</span> - 程式開發相關筆記
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink :to="{ name: 'category', params: { category: Routes.LIFE } }">
+        <NuxtLink :to="Routes.LIFE" title="Life - 生活、旅遊、食譜">
           <span>Life</span> - 生活、旅遊、食譜
         </NuxtLink>
       </li>
@@ -96,10 +94,10 @@ export default defineComponent({
   @apply flex flex-col items-center justify-evenly p-[8%] md:flex-row;
 
   li {
-    @apply relative mb-8 ml-4 w-[fit-content] border-b text-sm hover:border-light-active md:mt-10;
+    @apply relative mb-8 ml-4 w-[fit-content] border-b text-sm hover:border-common-active md:mt-10;
 
     &::before {
-      @apply absolute -left-4 text-light-active;
+      @apply absolute -left-4 text-common-active;
 
       content: "»";
       animation: swing 3s infinite, fadeInOut 5s infinite;
