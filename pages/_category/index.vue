@@ -1,12 +1,10 @@
 <template>
   <main>
     <h1 class="my-4">Categories</h1>
-
-    <h2 v-if="category === 'dev'">開發相關筆記整理 💻</h2>
-    <h2 v-else>生活相關文章 🏂</h2>
+    <h2>{{ pageText.subTitle }}</h2>
 
     <!-- subject list -->
-    <ul v-if="subjectData.length > 0">
+    <ul v-if="subjectData && subjectData.length > 0">
       <li v-for="subject in subjectData" :key="subject.name">
         <span class="dot"></span>
         <NuxtLink
@@ -25,19 +23,40 @@
 <script lang="ts">
 import { defineComponent, computed, useRoute } from "@nuxtjs/composition-api";
 import useArticle from "@/composables/useArticle";
+import useMetaHelper from "@/composables/useMetaHelper";
+import Routes from "@/types/routes";
+
+const titleText = {
+  dev: {
+    title: "技術文章目錄",
+    subTitle: "開發相關筆記整理 💻"
+  },
+  life: {
+    title: "生活文章目錄",
+    subTitle: "生活相關文章 🏂"
+  }
+};
 
 export default defineComponent({
   setup() {
     const route = useRoute();
     const category = computed(() => route.value.params.category);
+    const pageText = computed(() =>
+      route.value.path === Routes.DEVELOPMENT ? titleText.dev : titleText.life
+    );
+    const pagTitle = computed(() => pageText.value.title);
 
-    const { subjectData } = useArticle(category.value);
+    const { subjectData } = useArticle(category);
+
+    useMetaHelper(pagTitle);
 
     return {
       category,
+      pageText,
       subjectData
     };
-  }
+  },
+  head: {}
 });
 </script>
 

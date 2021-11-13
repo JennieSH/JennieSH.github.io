@@ -1,4 +1,4 @@
-import { useAsync } from "@nuxtjs/composition-api";
+import { useStatic, ComputedRef, computed } from "@nuxtjs/composition-api";
 import {
   concatPath,
   getSubjectData,
@@ -6,34 +6,60 @@ import {
   getArticleData
 } from "@/utils/parser";
 
-const useArticle = (category: string, subject?: string, article?: string) => {
+const useArticle = (
+  category: ComputedRef<string>,
+  subject?: ComputedRef<string>,
+  article?: ComputedRef<string>
+) => {
   const root = `${process.cwd()}/contents`;
+  const subjectId = computed(() => `${category.value}-${subject?.value}`);
+  const articleId = computed(() => `${subject?.value}-${article?.value}`);
 
-  const subjectData = useAsync(() => {
-    const categoryPath = concatPath([root, category]);
+  const subjectData = useStatic(
+    async () => {
+      const categoryPath = await concatPath([root, category.value]);
 
-    return getSubjectData(categoryPath);
-  });
+      return getSubjectData(categoryPath);
+    },
+    category,
+    "subjectData"
+  );
 
-  const articleMatterList = useAsync(() => {
-    if (subject) {
-      const subjectPath = concatPath([root, category, subject]);
+  const articleMatterList = useStatic(
+    async () => {
+      if (subject?.value) {
+        const subjectPath = await concatPath([
+          root,
+          category.value,
+          subject.value
+        ]);
 
-      return getAllArticleMatter(subjectPath);
-    }
+        return getAllArticleMatter(subjectPath);
+      }
 
-    return [];
-  });
+      return [];
+    },
+    subjectId,
+    "articleMatterList"
+  );
 
-  const articleMatter = useAsync(() => {
-    if (subject && article) {
-      const articlePath = concatPath([root, category, subject, article], ".md");
+  const articleMatter = useStatic(
+    async () => {
+      if (subject && article) {
+        const articlePath = concatPath(
+          [root, category.value, subject.value, article.value],
+          ".md"
+        );
+        const articleData = await getArticleData(articlePath);
 
-      return getArticleData(articlePath);
-    }
+        return articleData;
+      }
 
-    return null;
-  });
+      return null;
+    },
+    articleId,
+    "articleMatter"
+  );
 
   return {
     subjectData,

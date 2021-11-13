@@ -1,6 +1,6 @@
 <template>
   <main class="flex mx-auto">
-    <ToC :toc="articleMatter.toc" />
+    <ToC :toc="articleMatter && articleMatter.toc" />
     <Article :article-matter="articleMatter" />
   </main>
 </template>
@@ -13,14 +13,11 @@ import useMetaHelper from "@/composables/useMetaHelper";
 export default defineComponent({
   setup() {
     const route = useRoute();
-    const routeParams = computed(() => route.value.params);
+    const category = computed(() => route.value.params.category);
+    const subject = computed(() => route.value.params.subject);
+    const article = computed(() => route.value.params.article);
 
-    const { articleMatter } = useArticle(
-      routeParams.value.category,
-      routeParams.value.subject,
-      routeParams.value.article
-    );
-
+    const { articleMatter } = useArticle(category, subject, article);
     const pageTitle = computed(() => articleMatter.value?.info.title);
     const pageDescription = computed(
       () => articleMatter.value?.info.description
@@ -29,8 +26,7 @@ export default defineComponent({
     useMetaHelper(pageTitle, pageDescription);
 
     return {
-      articleMatter,
-      routeParams
+      articleMatter
     };
   },
   head: {}

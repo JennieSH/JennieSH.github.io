@@ -21,10 +21,7 @@ export default defineComponent({
     const category = computed(() => route.value.params.category);
     const subject = computed(() => route.value.params.subject);
 
-    const { subjectData, articleMatterList } = useArticle(
-      category.value,
-      subject.value
-    );
+    const { subjectData, articleMatterList } = useArticle(category, subject);
 
     useMetaHelper(subject);
 
