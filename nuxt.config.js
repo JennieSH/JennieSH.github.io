@@ -70,14 +70,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    "@nuxtjs/svg-sprite"
-  ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  modules: ["@nuxtjs/svg-sprite"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
