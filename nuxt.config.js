@@ -1,4 +1,6 @@
 export default {
+  target: "static",
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "傑尼海馬迴｜Jennie DEV",
@@ -46,7 +48,13 @@ export default {
       { hid: "og:image:width", property: "og:image:width", content: "300" },
       { hid: "og:image:height", property: "og:image:height", content: "300" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Lato:wght@400;700&display=swap"
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
