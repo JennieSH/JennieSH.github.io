@@ -3,7 +3,7 @@
     <h1 class="font-bold text-2xl capitalize">
       {{ subject }}
     </h1>
-    <ul v-if="articleMatterList.length > 0">
+    <ul v-if="articleMatterList && articleMatterList.length > 0">
       <ArticleItem
         v-for="(article, index) in articleMatterList"
         :key="`${index}.${article.title}`"

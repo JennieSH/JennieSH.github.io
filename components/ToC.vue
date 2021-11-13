@@ -1,5 +1,6 @@
 <template>
   <section
+    v-if="toc"
     :class="{
       show: isToCShow
     }"
