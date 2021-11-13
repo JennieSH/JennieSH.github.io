@@ -13,11 +13,14 @@ import useMetaHelper from "@/composables/useMetaHelper";
 export default defineComponent({
   setup() {
     const route = useRoute();
-    const category = computed(() => route.value.params.category);
-    const subject = computed(() => route.value.params.subject);
-    const article = computed(() => route.value.params.article);
+    const routeParams = computed(() => route.value.params);
 
-    const { articleMatter } = useArticle(category, subject, article);
+    const { getArticleMatter } = useArticle();
+    const articleMatter = getArticleMatter(
+      routeParams.value.category,
+      routeParams.value.subject,
+      routeParams.value.article
+    );
     const pageTitle = computed(() => articleMatter.value?.info.title);
     const pageDescription = computed(
       () => articleMatter.value?.info.description

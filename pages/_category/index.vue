@@ -40,18 +40,17 @@ const titleText = {
 export default defineComponent({
   setup() {
     const route = useRoute();
-    const category = computed(() => route.value.params.category);
     const pageText = computed(() =>
       route.value.path === Routes.DEVELOPMENT ? titleText.dev : titleText.life
     );
-    const pagTitle = computed(() => pageText.value.title);
+    const pageTitle = computed(() => pageText.value.title);
 
-    const { subjectData } = useArticle(category);
+    const { getSubjectDataList } = useArticle();
+    const subjectData = getSubjectDataList(route.value.params.category);
 
-    useMetaHelper(pagTitle);
+    useMetaHelper(pageTitle);
 
     return {
-      category,
       pageText,
       subjectData
     };

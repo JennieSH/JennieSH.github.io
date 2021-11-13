@@ -1,70 +1,74 @@
-import { useStatic, ComputedRef, computed } from "@nuxtjs/composition-api";
+import { useStatic, computed, Ref } from "@nuxtjs/composition-api";
 import {
   concatPath,
   getSubjectData,
   getAllArticleMatter,
   getArticleData
 } from "@/utils/parser";
+import { ArticleData, BasicInfo, SubjectData } from "@/types/content";
 
-const useArticle = (
-  category: ComputedRef<string>,
-  subject?: ComputedRef<string>,
-  article?: ComputedRef<string>
-) => {
+const useArticle = () => {
   const root = `${process.cwd()}/contents`;
-  const subjectId = computed(() => `${category.value}-${subject?.value}`);
-  const articleId = computed(() => `${subject?.value}-${article?.value}`);
 
-  const subjectData = useStatic(
-    async () => {
-      const categoryPath = await concatPath([root, category.value]);
+  const getSubjectDataList = (category: string): Ref<SubjectData[] | null> => {
+    const categoryId = computed(() => category);
 
-      return getSubjectData(categoryPath);
-    },
-    category,
-    "subjectData"
-  );
+    return useStatic(
+      async () => {
+        const categoryPath = concatPath([root, category]);
+        const subjectData = await getSubjectData(categoryPath);
 
-  const articleMatterList = useStatic(
-    async () => {
-      if (subject?.value) {
-        const subjectPath = await concatPath([
-          root,
-          category.value,
-          subject.value
-        ]);
+        return subjectData;
+      },
+      categoryId,
+      "subjectData"
+    );
+  };
 
-        return getAllArticleMatter(subjectPath);
-      }
+  const getArticleMatterList = (
+    category: string,
+    subject: string
+  ): Ref<BasicInfo[] | null> => {
+    const subjectId = computed(() => `${category}-${subject}`);
 
-      return [];
-    },
-    subjectId,
-    "articleMatterList"
-  );
+    return useStatic(
+      async () => {
+        const subjectPath = concatPath([root, category, subject]);
+        const articleMatterList = await getAllArticleMatter(subjectPath);
 
-  const articleMatter = useStatic(
-    async () => {
-      if (subject && article) {
+        return articleMatterList;
+      },
+      subjectId,
+      "articleMatterList"
+    );
+  };
+
+  const getArticleMatter = (
+    category: string,
+    subject: string,
+    article: string
+  ): Ref<ArticleData | null> => {
+    const articleId = computed(() => `${subject}-${article}`);
+
+    return useStatic(
+      async () => {
         const articlePath = concatPath(
-          [root, category.value, subject.value, article.value],
+          [root, category, subject, article],
           ".md"
         );
         const articleData = await getArticleData(articlePath);
 
         return articleData;
-      }
-
-      return null;
-    },
-    articleId,
-    "articleMatter"
-  );
+      },
+      articleId,
+      "articleMatter"
+    );
+  };
 
   return {
-    subjectData,
-    articleMatterList,
-    articleMatter
+    getSubjectDataList,
+    getArticleMatterList,
+    getArticleMatter
   };
 };
 
