@@ -36,7 +36,12 @@
   "cSpell.words": [
     "hljs",
     "nuxt",
-    "tailwindcss"
+    "nuxtjs",
+    "tailwindcss",
+    "noreferrer",
+    "noopener",
+    "linkify"
+
   ],
   "cSpell.ignorePaths": [
     "node_modules",        // this will ignore anything the node_modules directory
