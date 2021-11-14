@@ -61,31 +61,31 @@
   }
 
   blockquote {
-    @apply text-alert-gary-text bg-alert-gary-bg  border-alert-gary-border;
+    @apply text-alert-gary-text bg-alert-gary-bg  border-alert-gary-border dark:bg-opacity-80;
 
     @extend %alert-block;
   }
 
   .success {
-    @apply text-[#33691E] bg-[#CAD9C0] border-[#7F8D7C];
+    @apply text-[#33691E] bg-[#CAD9C0] border-[#7F8D7C] dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .info {
-    @apply text-[#536483] bg-[#C8DAE9] border-[#4F728A];
+    @apply text-[#536483] bg-[#C8DAE9] border-[#4F728A] dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .warning {
-    @apply text-[#93732F] bg-[#F8F0D2] border-[#D3AE5B];
+    @apply text-[#93732F] bg-[#F8F0D2] border-[#D3AE5B] dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .danger {
-    @apply text-[#A44A43] bg-[#F1DEDF] border-[#D59DA4];
+    @apply text-[#A44A43] bg-[#F1DEDF] border-[#D59DA4] dark:bg-opacity-90;
 
     @extend %alert-block;
   }
