@@ -1,3 +1,22 @@
+$gray-500: #6b7280;
+$gray-100: #f3f4f6;
+
+// for <code> tag which is under <p> and <li>.
+%code-tag {
+  padding: 0.125rem 0.25rem;
+  color: $gray-500;
+  background-color: $gray-100;
+  border-radius: 0.375rem;
+}
+
+// for alert area
+%alert-block {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid;
+  border-radius: 0.25rem;
+}
+
 .markdown {
   @apply leading-relaxed max-w-3xl text-sm 2xl:max-w-4xl;
 
@@ -19,17 +38,21 @@
     }
   }
 
+  h3 {
+    @apply text-[15px];
+  }
+
   // tags
   h6 {
     @apply hidden;
   }
 
   a {
-    @apply text-common-active  hover:border-b hover:border-common-active;
+    @apply text-common-link hover:border-b hover:border-common-active;
   }
 
   img {
-    @apply mx-auto my-4 w-10/12;
+    @apply mx-auto my-4;
   }
 
   pre {
@@ -40,12 +63,16 @@
     @apply my-3 leading-6;
 
     > code {
-      @apply px-1 py-[2px] text-gray-500 bg-gray-100 rounded-md;
+      @extend %code-tag;
     }
   }
 
   li {
     @apply pl-2 py-1 list-disc list-inside;
+
+    > code {
+      @extend %code-tag;
+    }
 
     p {
       @apply inline;
@@ -75,44 +102,37 @@
   }
 
   // alert area
-  %alert-block {
-    margin: 1rem 0;
-    padding: 0.5rem 1rem;
-    border-left: 4px solid;
-    border-radius: 0.25rem;
-  }
-
   blockquote {
-    @apply text-alert-gary-text bg-alert-gary-bg  border-alert-gary-border dark:bg-opacity-80;
+    @apply text-alert-default-text bg-alert-default-bg  border-alert-default-border dark:bg-opacity-80;
 
     @extend %alert-block;
   }
 
   .success {
-    @apply text-[#33691E] bg-[#CAD9C0] border-[#7F8D7C] dark:bg-opacity-90;
+    @apply text-alert-success-text bg-alert-success-bg border-alert-success-border dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .info {
-    @apply text-[#536483] bg-[#C8DAE9] border-[#4F728A] dark:bg-opacity-90;
+    @apply text-alert-info-text bg-alert-info-bg border-alert-info-border dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .warning {
-    @apply text-[#93732F] bg-[#F8F0D2] border-[#D3AE5B] dark:bg-opacity-90;
+    @apply text-alert-warning-text bg-alert-warning-bg border-alert-warning-border dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
   .danger {
-    @apply text-[#A44A43] bg-[#F1DEDF] border-[#D59DA4] dark:bg-opacity-90;
+    @apply text-alert-danger-text bg-alert-danger-bg border-alert-danger-border dark:bg-opacity-90;
 
     @extend %alert-block;
   }
 
-  .spoiler > p {
-    @apply ml-4;
+  .spoiler {
+    @apply p-2 border border-dashed rounded;
   }
 }
