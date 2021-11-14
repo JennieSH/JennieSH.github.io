@@ -2,6 +2,8 @@ import type MarkdownItType from "markdown-it";
 
 import MarkdownIt from "markdown-it";
 import MarkdownItContainer from "markdown-it-container";
+import MarkdownItEmoji from "markdown-it-emoji";
+
 import hljs from "./hljs";
 
 const md: MarkdownItType = new MarkdownIt({
@@ -34,6 +36,7 @@ const md: MarkdownItType = new MarkdownIt({
     );
   }
 })
+  .use(MarkdownItEmoji)
   .use(MarkdownItContainer, "success")
   .use(MarkdownItContainer, "info")
   .use(MarkdownItContainer, "warning")
