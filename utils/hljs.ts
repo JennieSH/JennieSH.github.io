@@ -1,4 +1,4 @@
-import hljs from "highlight.js/lib/core";
+import hljs from "highlight.js";
 
 // highlight language
 import bash from "highlight.js/lib/languages/bash";
@@ -10,6 +10,7 @@ import xml from "highlight.js/lib/languages/xml";
 import css from "highlight.js/lib/languages/css";
 import scss from "highlight.js/lib/languages/scss";
 import shell from "highlight.js/lib/languages/shell";
+import hljsDefineVue from "./hljs-vue";
 
 hljs.registerLanguage("bash", bash);
 hljs.registerLanguage("javascript", javascript);
@@ -20,5 +21,6 @@ hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("css", css);
 hljs.registerLanguage("scss", scss);
 hljs.registerLanguage("shell", shell);
+hljs.registerLanguage("vue", hljsDefineVue);
 
 export default hljs;
