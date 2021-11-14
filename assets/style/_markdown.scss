@@ -52,6 +52,28 @@
     }
   }
 
+  // table
+  table {
+    @apply border-2 border-gray-300;
+
+    tr,
+    td {
+      @apply px-2 py-1 divide-x-2 divide-gray-300;
+    }
+
+    tr {
+      @apply even:bg-gray-100 dark:even:bg-opacity-20;
+    }
+
+    thead {
+      @apply border-b-2 border-gray-300;
+    }
+
+    tbody {
+      @apply divide-y-2 divide-gray-300;
+    }
+  }
+
   // alert area
   %alert-block {
     margin: 1rem 0;
