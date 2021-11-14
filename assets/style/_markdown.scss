@@ -56,7 +56,7 @@ $gray-100: #f3f4f6;
   }
 
   pre {
-    @apply my-4 p-4 whitespace-pre-wrap rounded;
+    @apply my-4 p-4 rounded whitespace-pre-wrap break-all md:break-words;
   }
 
   p {
