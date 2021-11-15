@@ -8,7 +8,10 @@
       <li v-for="subject in subjectData" :key="subject.name">
         <span class="dot"></span>
         <NuxtLink
-          :to="{ name: 'category-subject', params: { subject: subject.name } }"
+          :to="{
+            name: 'category-subject',
+            params: { category: category, subject: subject.name }
+          }"
         >
           {{ subject.name }}
           <span class="text-sm text-gray-400">({{ subject.amount }})</span>
@@ -24,7 +27,6 @@
 import { defineComponent, computed, useRoute } from "@nuxtjs/composition-api";
 import useArticle from "@/composables/useArticle";
 import useMetaHelper from "@/composables/useMetaHelper";
-import Routes from "@/types/routes";
 
 const titleText = {
   dev: {
@@ -40,17 +42,19 @@ const titleText = {
 export default defineComponent({
   setup() {
     const route = useRoute();
+    const category = computed(() => route.value.params.category);
     const pageText = computed(() =>
-      route.value.path === Routes.DEVELOPMENT ? titleText.dev : titleText.life
+      category.value === "dev" ? titleText.dev : titleText.life
     );
     const pageTitle = computed(() => pageText.value.title);
 
     const { getSubjectDataList } = useArticle();
-    const subjectData = getSubjectDataList(route.value.params.category);
+    const subjectData = getSubjectDataList(category.value);
 
     useMetaHelper(pageTitle);
 
     return {
+      category,
       pageText,
       subjectData
     };

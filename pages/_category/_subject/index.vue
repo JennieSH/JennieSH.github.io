@@ -1,9 +1,14 @@
 <template>
   <main class="flex">
-    <Category class="flex-none hidden lg:block" :subject-data="subjectData" />
+    <Category
+      class="flex-none hidden lg:block"
+      :category="routeParams.category"
+      :subject-data="subjectData"
+    />
 
     <ArticleList
-      :subject="subject"
+      :category="routeParams.category"
+      :subject="routeParams.subject"
       :article-matter-list="articleMatterList"
       class="flex-grow"
     />
@@ -31,8 +36,8 @@ export default defineComponent({
     useMetaHelper(subject);
 
     return {
+      routeParams,
       subjectData,
-      subject,
       articleMatterList
     };
   },

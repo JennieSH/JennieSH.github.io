@@ -3,7 +3,11 @@
     <NuxtLink
       :to="{
         name: 'category-subject-article',
-        params: { subject: subject, article: article.fileName }
+        params: {
+          category: category,
+          subject: subject,
+          article: article.fileName
+        }
       }"
       :title="article.title"
     >
@@ -28,6 +32,10 @@ import { BasicInfo } from "@/types/content";
 export default defineComponent({
   name: "ArticleItem",
   props: {
+    category: {
+      type: String,
+      default: ""
+    },
     subject: {
       type: String,
       default: ""

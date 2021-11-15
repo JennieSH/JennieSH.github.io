@@ -1,7 +1,11 @@
 <template>
   <main class="flex mx-auto">
     <ToC :toc="articleMatter && articleMatter.toc" />
-    <Article :article-matter="articleMatter" />
+    <Article
+      :article-matter="articleMatter"
+      :category="routeParams.category"
+      :subject="routeParams.subject"
+    />
   </main>
 </template>
 
@@ -29,6 +33,7 @@ export default defineComponent({
     useMetaHelper(pageTitle, pageDescription);
 
     return {
+      routeParams,
       articleMatter
     };
   },

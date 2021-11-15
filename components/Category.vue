@@ -3,7 +3,10 @@
     <ul>
       <li v-for="subject in subjectData" :key="subject.name">
         <NuxtLink
-          :to="{ name: 'category-subject', params: { subject: subject.name } }"
+          :to="{
+            name: 'category-subject',
+            params: { category: category, subject: subject.name }
+          }"
         >
           {{ subject.name }}
           <span class="text-sm text-gray-400 pl-1">({{ subject.amount }})</span>
@@ -20,6 +23,10 @@ import { SubjectData } from "@/types/content";
 export default defineComponent({
   name: "Category",
   props: {
+    category: {
+      type: String,
+      default: ""
+    },
     subjectData: {
       type: Array as PropType<SubjectData[]>,
       default: () => []

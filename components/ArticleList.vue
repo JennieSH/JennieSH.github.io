@@ -8,6 +8,7 @@
         v-for="(article, index) in articleMatterList"
         :key="`${index}.${article.title}`"
         class="my-7"
+        :category="category"
         :subject="subject"
         :article="article"
       />
@@ -23,6 +24,10 @@ import { BasicInfo } from "@/types/content";
 export default defineComponent({
   name: "ArticleList",
   props: {
+    category: {
+      type: String,
+      default: ""
+    },
     subject: {
       type: String,
       default: ""
