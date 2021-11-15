@@ -39,12 +39,8 @@ export default defineComponent({
 aside {
   @apply w-1/5 max-h-screen mr-2 px-2 py-8 overflow-scroll;
 
-  li {
-    @apply py-2 px-4 font-bold cursor-pointer rounded hover:bg-light-block dark:hover:bg-dark-block;
-  }
-
   a {
-    @apply capitalize;
+    @apply inline-block w-full py-2 px-4 font-bold capitalize rounded hover:bg-light-block dark:hover:bg-dark-block;
   }
 }
 </style>
