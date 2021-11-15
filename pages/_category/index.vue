@@ -4,7 +4,9 @@
     <h2>{{ pageText.subTitle }}</h2>
 
     <!-- subject list -->
-    <ul v-if="subjectData && subjectData.length > 0">
+    <p v-if="!subjectData">loading ....</p>
+    <p v-else-if="subjectData.length === 0">Sorry... It's empty now. 🙇‍♀️</p>
+    <ul v-else>
       <li v-for="subject in subjectData" :key="subject.name">
         <span class="dot"></span>
         <NuxtLink
@@ -18,8 +20,6 @@
         </NuxtLink>
       </li>
     </ul>
-
-    <p v-else class="text-center my-10">empty</p>
   </main>
 </template>
 
@@ -67,11 +67,15 @@ export default defineComponent({
 main {
   @apply flex flex-col items-center tracking-wide;
 
-  h2 {
+  > h2 {
     @apply font-normal italic text-sm text-gray-400;
   }
 
-  ul {
+  > p {
+    @apply text-center my-10;
+  }
+
+  > ul {
     @apply flex-initial my-10 w-3/5;
   }
 }

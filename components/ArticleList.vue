@@ -3,7 +3,12 @@
     <h1 class="font-bold text-2xl capitalize">
       {{ subject }}
     </h1>
-    <ul v-if="articleMatterList && articleMatterList.length > 0">
+
+    <p v-if="!articleMatterList" class="mt-8">loading ....</p>
+    <p v-else-if="articleMatterList.length === 0" class="mt-8">
+      Sorry... It's empty now. 🙇‍♀️
+    </p>
+    <ul v-else>
       <ArticleItem
         v-for="(article, index) in articleMatterList"
         :key="`${index}.${article.title}`"
@@ -13,7 +18,6 @@
         :article="article"
       />
     </ul>
-    <p v-else class="mt-8">Sorry... It's empty now. 🙇‍♀️</p>
   </section>
 </template>
 
