@@ -12,7 +12,9 @@
       :title="article.title"
     >
       <h2 class="font-bold text-lg">{{ article.title }}</h2>
-      <span class="text-sm text-gray-400">{{ article.publishedDate }}</span>
+      <span class="text-sm text-gray-400">{{
+        formatTime(article.createdAt)
+      }}</span>
       <p class="my-4 text-gray-800 dark:text-white">
         {{ article.description }}
       </p>
@@ -28,6 +30,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "@nuxtjs/composition-api";
 import { BasicInfo } from "@/types/content";
+import { formatTime } from "@/utils/format";
 
 export default defineComponent({
   name: "ArticleItem",
@@ -44,6 +47,9 @@ export default defineComponent({
       type: Object as PropType<BasicInfo>,
       default: null
     }
+  },
+  setup() {
+    return { formatTime };
   }
 });
 </script>

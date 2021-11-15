@@ -7,10 +7,10 @@
   >
     <ul>
       <li class="title">
-        <a :href="`#${toc.title}`">{{ toc.title }}</a>
+        <a :href="`#${toc.title}`" :title="toc.title">{{ toc.title }}</a>
       </li>
       <li v-for="subtitle in toc.subtitles" :key="subtitle">
-        <a :href="`#${subtitle}`">{{ subtitle }}</a>
+        <a :href="`#${subtitle}`" :title="subtitle">{{ subtitle }}</a>
       </li>
     </ul>
 

@@ -3,15 +3,38 @@
     v-if="articleMatter"
     class="mx-auto px-8 py-6 xl:px-16 dark:bg-dark-black"
   >
+    <div class="info">
+      <NuxtLink
+        :to="{
+          name: 'category-subject',
+          params: { category: category, subject: subject }
+        }"
+        :title="`Back to ${subject}`"
+        class="info-item info-link"
+      >
+        <SvgIcon class="info-icon mr-2" name="folder-open" />
+        {{ subject }}
+      </NuxtLink>
+
+      <div v-if="createdAt" class="info-item mx-8">
+        <SvgIcon class="info-icon mr-2" name="calendar" />
+        {{ createdAt }}
+      </div>
+    </div>
+
+    <!-- Article Content -->
     <div class="markdown" v-html="articleMatter.content"></div>
 
-    <div v-if="tagList.length > 0" class="mt-10 text-dark-gray text-sm">
-      Tags：
+    <div class="mt-4">
+      <SvgIcon v-if="tagList.length > 0" class="info-icon" name="tag" />
       <Tag v-for="tag in tagList" :key="tag" :tag-name="tag" />
     </div>
 
-    <div v-if="publishedDate" class="mt-4 text-dark-gray text-sm">
-      Last Update Date： {{ publishedDate }}
+    <div
+      class="flex flex-wrap justify-between mt-4 text-sm italic text-dark-gray"
+    >
+      <div v-if="createdAt">Published on {{ createdAt }}</div>
+      <div v-if="updatedAt">Updated on {{ updatedAt }}</div>
     </div>
   </article>
 </template>
@@ -19,10 +42,19 @@
 <script lang="ts">
 import { defineComponent, PropType, computed } from "@nuxtjs/composition-api";
 import { FrontMatter } from "@/types/content";
+import { formatTime } from "@/utils/format";
 
 export default defineComponent({
   name: "Article",
   props: {
+    category: {
+      type: String,
+      default: ""
+    },
+    subject: {
+      type: String,
+      default: ""
+    },
     articleMatter: {
       type: Object as PropType<FrontMatter>,
       default: null
@@ -30,14 +62,36 @@ export default defineComponent({
   },
   setup(props) {
     const tagList = computed(() => props.articleMatter.info.tags || []);
-    const publishedDate = computed(
-      () => props.articleMatter.info.publishedDate || ""
+    const createdAt = computed(() =>
+      formatTime(props.articleMatter.info.createdAt)
+    );
+    const updatedAt = computed(() =>
+      formatTime(props.articleMatter.info.updatedAt)
     );
 
     return {
       tagList,
-      publishedDate
+      createdAt,
+      updatedAt
     };
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.info {
+  @apply flex items-center font-bold text-sm text-gray-600 dark:text-gray-50;
+
+  &-item {
+    @apply flex items-center;
+  }
+
+  &-link {
+    @apply uppercase hover:text-common-link;
+  }
+
+  &-icon {
+    @apply inline-block h-4 w-4 text-gray-400;
+  }
+}
+</style>

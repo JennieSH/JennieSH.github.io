@@ -7,7 +7,8 @@ interface BasicInfo {
   title?: string;
   fileName?: string;
   description?: string;
-  publishedDate?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
   tags?: string[];
   [key: string]: any;
 }
