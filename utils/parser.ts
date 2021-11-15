@@ -11,6 +11,7 @@ import {
 } from "@/types/content";
 
 /**
+ * join all given path segments and suffix together
  * @example
  * (['dev', 'test', 'TDD'], ".md") => "dev/test/TDD.md"
  * (['dev', 'test']) => "dev/test"
@@ -22,13 +23,17 @@ const concatPath = (paths: string[], suffix?: string): string => {
 };
 
 /**
+ * returns an array with all the file names or objects in the directory of a given path
  * @example
- * "# Hello World" => "<h1>Hello World</h1>"
+ * "#${process.cwd()}/contents" => "['dev', 'life']"
+ * "#${process.cwd()}/contents/dev/javascript" => "['closure.md']"
  */
-const convertMarkdownToHtml = (content: string): string => md.render(content);
+const getDirData = (folderPath: string): string[] => fs.readdirSync(folderPath);
 
 /**
  * get front-matter from markdown file
+ * @example
+ * ('---title: Front Matter---\nThis is content.) => { data:{ title: "Front Matter"}, content:\nThis is content.}
  */
 const getFrontMatter = (articlePath: string): FrontMatter => {
   const articleData = fs.readFileSync(articlePath, "utf-8");
@@ -39,6 +44,14 @@ const getFrontMatter = (articlePath: string): FrontMatter => {
     content
   };
 };
+
+/**
+ * parse markdown text and return HTML
+ * @example
+ * "# Hello World" => "<h1>Hello World</h1>"
+ */
+const parseMarkdownToHtml = (markdownText: string): string =>
+  md.render(markdownText);
 
 /**
  * generate ToC and set the anchor to title
@@ -102,13 +115,6 @@ const processHtml = (
 
 /**
  * @example
- * "#${process.cwd()}/contents" => "['dev', 'life']"
- * "#${process.cwd()}/contents/dev/javascript" => "['closure.md']"
- */
-const getDirData = (folderPath: string): string[] => fs.readdirSync(folderPath);
-
-/**
- * @example
  * "dev" => [ { name: 'javascript', articleList: ['closure.md', 'hoisting.md'] } ]
  */
 const getSubjectData = (categoryPath: string): SubjectData[] => {
@@ -139,7 +145,7 @@ const getAllArticleMatter = (subjectPath: string): BasicInfo[] => {
 
 const getArticleData = (articlePath: string): ArticleData => {
   const { info, content } = getFrontMatter(articlePath);
-  const rawHtmlContent = convertMarkdownToHtml(content);
+  const rawHtmlContent = parseMarkdownToHtml(content);
   const { toc, htmlContent } = processHtml(rawHtmlContent);
 
   return {
