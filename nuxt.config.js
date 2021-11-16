@@ -12,6 +12,10 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "format-detection", content: "telephone=no" },
       {
+        name: "google-site-verification",
+        content: "KAONipFn6ticaFtY32RIDOQP-5J9AcuoHlXoV8mzBRc"
+      },
+      {
         hid: "description",
         name: "description",
         content:
