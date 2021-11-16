@@ -1,0 +1,9 @@
+{
+    "*.{ts,js,vue}": [
+      "yarn lint:js --fix"
+    ],
+    "*.{scss,css,vue}": [
+      "prettier --write",
+      "yarn lint:style"
+    ]
+}

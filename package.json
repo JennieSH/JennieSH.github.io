@@ -13,10 +13,6 @@
     "lint": "yarn lint:js && yarn lint:style",
     "test": "jest"
   },
-  "lint-staged": {
-    "*.{ts,js,vue}": "eslint",
-    "*.{scss,css,vue}": "stylelint"
-  },
   "dependencies": {
     "@nuxtjs/composition-api": "^0.29.3",
     "@nuxtjs/markdownit": "^2.0.0",
