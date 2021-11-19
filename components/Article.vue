@@ -25,8 +25,9 @@
     <!-- Article Content -->
     <div class="markdown" v-html="articleMatter.content"></div>
 
-    <div class="mt-4">
-      <SvgIcon v-if="tagList.length > 0" class="info-icon" name="tag" />
+    <div class="flex flex-wrap items-center mt-4">
+      <SvgIcon v-if="tagList.length > 0" class="info-icon mr-1" name="tag" />
+
       <Tag v-for="tag in tagList" :key="tag" :tag-name="tag" />
     </div>
 

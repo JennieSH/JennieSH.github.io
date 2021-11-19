@@ -18,11 +18,13 @@
       <p class="my-4 text-gray-800 dark:text-white">
         {{ article.description }}
       </p>
-      <Tag
-        v-for="(tag, index) in article.tags"
-        :key="`${index}.${tag}`"
-        :tag-name="tag"
-      />
+      <div class="flex flex-wrap">
+        <Tag
+          v-for="(tag, index) in article.tags"
+          :key="`${index}.${tag}`"
+          :tag-name="tag"
+        />
+      </div>
     </NuxtLink>
   </li>
 </template>

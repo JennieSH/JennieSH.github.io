@@ -2,7 +2,7 @@ $gray-500: #6b7280;
 $gray-100: #f3f4f6;
 
 // for <code> tag which is under <p> and <li>.
-%code-tag {
+%code-block {
   padding: 0.125rem 0.25rem;
   color: $gray-500;
   background-color: $gray-100;
@@ -59,11 +59,15 @@ $gray-100: #f3f4f6;
     @apply my-4 p-4 rounded whitespace-pre-wrap break-all md:break-words;
   }
 
+  summary {
+    @apply outline-none;
+  }
+
   p {
     @apply my-3 leading-6;
 
     > code {
-      @extend %code-tag;
+      @extend %code-block;
     }
   }
 
@@ -71,7 +75,7 @@ $gray-100: #f3f4f6;
     @apply pl-2 py-1 list-disc list-inside;
 
     > code {
-      @extend %code-tag;
+      @extend %code-block;
     }
 
     p {
