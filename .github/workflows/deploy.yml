@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  deploy-github-page:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node env
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies with Yarn
+        run: yarn --frozen-lockfile
+
+      - name: Run test with Jest
+        run: yarn test
+
+      - name: Generate Static Site
+        run: yarn generate
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.
