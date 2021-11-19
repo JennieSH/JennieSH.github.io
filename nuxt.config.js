@@ -78,11 +78,12 @@ export default {
     "@nuxtjs/stylelint-module",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/composition-api/module"
+    "@nuxtjs/composition-api/module",
+    "@/modules/generator"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/svg-sprite"],
+  modules: ["@nuxtjs/svg-sprite", "@nuxtjs/sitemap"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -99,6 +100,16 @@ export default {
           }
         ]
       });
+    }
+  },
+
+  sitemap: {
+    hostname: "https://jenniesh.github.io/",
+    gzip: true,
+    defaults: {
+      changefreq: "weekly",
+      priority: 1,
+      lastmod: new Date()
     }
   }
 };
