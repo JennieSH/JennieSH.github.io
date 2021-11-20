@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Utilities/github-actions-quickstart", {data:[{}],fetch:{},mutations:void 0});

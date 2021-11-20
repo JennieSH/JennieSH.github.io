@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/NPM/create-own-eslint-config", {data:[{}],fetch:{},mutations:void 0});

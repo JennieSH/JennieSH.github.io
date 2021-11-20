@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/life/%E6%B8%AC%E8%A9%A6/markdown-test", {data:[{}],fetch:{},mutations:void 0});
