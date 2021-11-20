@@ -25,7 +25,7 @@ $gray-100: #f3f4f6;
   }
 
   h2 {
-    @apply mt-6 mb-4 relative;
+    @apply mt-16 mb-4 relative;
 
     &::before {
       @apply absolute left-[-16px] text-common-active;
@@ -39,7 +39,7 @@ $gray-100: #f3f4f6;
   }
 
   h3 {
-    @apply text-[15px];
+    @apply mt-6 text-[16px];
   }
 
   // tags
