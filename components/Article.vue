@@ -79,6 +79,8 @@ export default defineComponent({
 });
 </script>
 
+<style lang="scss" src="@/assets/style/markdown.scss"></style>
+
 <style lang="scss" scoped>
 .info {
   @apply flex items-center font-bold text-sm text-gray-600 dark:text-gray-50;

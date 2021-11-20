@@ -105,7 +105,10 @@ $gray-100: #f3f4f6;
     }
   }
 
-  // alert area
+  /*
+  start - alert area
+*/
+
   blockquote {
     @apply text-alert-default-text bg-alert-default-bg  border-alert-default-border dark:bg-opacity-80;
 
@@ -140,3 +143,7 @@ $gray-100: #f3f4f6;
     @apply p-2 border border-dashed rounded;
   }
 }
+
+/*
+  end - alert area
+*/

@@ -1,5 +1,4 @@
 @import "./transition";
-@import "./markdown";
 
 * {
   font-family: "DM Sans", sans-serif;
@@ -16,7 +15,10 @@
   }
 }
 
-// override tailwind .container
+/*
+  start - override tailwind configuration
+*/
+
 .container {
   @apply flex-grow xl:max-w-5xl 2xl:max-w-7xl;
 }
@@ -41,3 +43,7 @@ h2 {
 h3 {
   @apply py-1;
 }
+
+/*
+  end - override tailwind configuration
+*/
