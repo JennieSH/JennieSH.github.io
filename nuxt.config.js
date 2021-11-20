@@ -35,12 +35,12 @@ export default {
       {
         hid: "og:url",
         property: "og:url",
-        content: "https://JennieSH.github.io"
+        content: process.env.BASE_URL
       },
       {
         hid: "keywords",
         name: "keywords",
-        content: "前端開發、技術部落格、旅遊"
+        content: "前端開發、技術部落格、生活、旅遊"
       },
       {
         hid: "og:site_name",
@@ -103,8 +103,12 @@ export default {
     }
   },
 
+  env: {
+    baseUrl: process.env.BASE_URL || "http://localhost:3000"
+  },
+
   sitemap: {
-    hostname: "https://jenniesh.github.io/",
+    hostname: process.env.BASE_URL,
     gzip: true,
     defaults: {
       changefreq: "weekly",

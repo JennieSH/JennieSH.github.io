@@ -25,12 +25,16 @@ export default defineComponent({
       routeParams.value.subject,
       routeParams.value.article
     );
+
     const pageTitle = computed(() => articleMatter.value?.info.title);
     const pageDescription = computed(
       () => articleMatter.value?.info.description
     );
+    const pageKeywords = computed(() =>
+      articleMatter.value?.info.tags?.join("、")
+    );
 
-    useMetaHelper(pageTitle, pageDescription);
+    useMetaHelper(pageTitle, pageDescription, pageKeywords);
 
     return {
       routeParams,
