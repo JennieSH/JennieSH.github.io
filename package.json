@@ -11,7 +11,7 @@
     "lint:style": "stylelint \"**/*.{vue,css,scss}\" --ignore-path .gitignore --fix",
     "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:style",
-    "test": "jest",
+    "test": "jest  --passWithNoTests",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
