@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/life/Orthodontics", {data:[{}],fetch:{},mutations:void 0});
