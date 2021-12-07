@@ -81,6 +81,10 @@ $gray-100: #f3f4f6;
     p {
       @apply inline;
     }
+
+    > ul > li {
+      list-style-type: circle;
+    }
   }
 
   // table
