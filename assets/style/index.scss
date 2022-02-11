@@ -1,13 +1,13 @@
 @import "./transition";
 
 * {
-  font-family: "DM Sans", sans-serif;
   scroll-behavior: smooth;
 }
 
 .app {
   @apply flex flex-col justify-between min-h-screen text-light-text dark:text-dark-text dark:bg-dark-bg;
 
+  font-family: "DM Sans", sans-serif;
   transition: background-color 0.5s ease-in-out;
 
   ::selection {

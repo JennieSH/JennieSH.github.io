@@ -7,7 +7,7 @@ import MarkdownItEmoji from "markdown-it-emoji";
 import hljs from "./hljs";
 
 const md: MarkdownItType = new MarkdownIt({
-  html: true,
+  html: false,
   linkify: true,
   breaks: true,
   xhtmlOut: true,
