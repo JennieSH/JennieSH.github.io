@@ -1,16 +1,10 @@
 <template>
-  <main>
+  <main class="flex flex-col justify-center">
     <section class="introduction">
       <div class="introduction-img">
         <div>
           <img :src="Link.AVATAR" alt="personal-img" />
         </div>
-        <span class="text-[10px] text-gray-300">
-          （圖片來源:
-          <a :href="Link.AVATAR" target="_blank" rel="noreferrer noopener">
-            Unsplash）
-          </a>
-        </span>
       </div>
 
       <div class="introduction-content">
@@ -69,7 +63,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .introduction {
-  @apply flex flex-col justify-center items-center mx-auto mt-12 md:mt-20 md:flex-row;
+  @apply flex flex-col justify-center items-center mx-auto md:flex-row;
 
   &-img {
     @apply flex flex-col items-center justify-center mx-[10%];
@@ -93,7 +87,7 @@ export default defineComponent({
 }
 
 .category {
-  @apply flex flex-col items-center justify-evenly p-[8%] md:flex-row;
+  @apply flex flex-col items-center justify-evenly md:mt-10 md:flex-row;
 
   li {
     @apply relative mb-8 ml-4 w-[fit-content] border-b text-sm hover:border-common-active md:mt-10;
