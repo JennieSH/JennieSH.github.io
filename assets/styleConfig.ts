@@ -1,6 +1,6 @@
 const colors = {
   light: {
-    primary: "#3CA2A2",
+    primary: "#215A6D",
     secondary: "#2C3944",
     title: "#215A6D",
     bg: "#FFFFFF",
