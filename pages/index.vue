@@ -3,7 +3,7 @@
     <section class="introduction">
       <div class="introduction-img">
         <div>
-          <img :src="Link.AVATAR" alt="personal-img" />
+          <img src="@/assets/images/Avatar.jpg" alt="avatar" />
         </div>
       </div>
 
