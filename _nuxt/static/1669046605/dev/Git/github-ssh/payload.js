@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Git/github-ssh", {data:[{}],fetch:{},mutations:void 0});
