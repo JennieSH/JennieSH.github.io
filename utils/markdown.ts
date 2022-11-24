@@ -7,7 +7,7 @@ import MarkdownItEmoji from "markdown-it-emoji";
 import hljs from "./hljs";
 
 const md: MarkdownItType = new MarkdownIt({
-  html: false,
+  html: true,
   linkify: true,
   breaks: true,
   xhtmlOut: true,
@@ -27,7 +27,7 @@ const md: MarkdownItType = new MarkdownIt({
           }).value +
           "</code></pre>"
         );
-      } catch (__) {}
+      } catch (__) { }
     }
 
     return (
