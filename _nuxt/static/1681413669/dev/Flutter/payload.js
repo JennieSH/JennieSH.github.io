@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Flutter", {data:[{}],fetch:{},mutations:void 0});
