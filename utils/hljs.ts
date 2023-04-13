@@ -10,6 +10,7 @@ import xml from "highlight.js/lib/languages/xml";
 import css from "highlight.js/lib/languages/css";
 import scss from "highlight.js/lib/languages/scss";
 import shell from "highlight.js/lib/languages/shell";
+import dart from "highlight.js/lib/languages/dart";
 import hljsDefineVue from "./hljs-vue";
 
 hljs.registerLanguage("bash", bash);
@@ -21,6 +22,7 @@ hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("css", css);
 hljs.registerLanguage("scss", scss);
 hljs.registerLanguage("shell", shell);
+hljs.registerLanguage("dart", dart);
 hljs.registerLanguage("vue", hljsDefineVue);
 
 export default hljs;

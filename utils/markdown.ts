@@ -27,7 +27,9 @@ const md: MarkdownItType = new MarkdownIt({
           }).value +
           "</code></pre>"
         );
-      } catch (__) { }
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     return (
