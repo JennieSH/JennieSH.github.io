@@ -52,10 +52,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 section {
-  @apply fixed hidden left-0 top-[15%] py-5 px-8 h-[fit-content] w-56 bg-light-block dark:text-dark-text dark:bg-dark-block xl:block 2xl:w-72;
+  @apply fixed hidden left-0 top-[15%] py-5 px-8 h-[fit-content] w-56 bg-light-block dark:text-dark-text dark:bg-dark-block xl:block 2xl:w-64;
 
   transform: translateX(-95%);
-  transition: all 1.5s ease-in-out;
+  transition: transform 1.2s ease-in-out;
 
   &.show {
     transform: translateX(0);
