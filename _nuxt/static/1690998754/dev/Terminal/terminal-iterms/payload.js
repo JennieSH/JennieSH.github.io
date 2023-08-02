@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Terminal/terminal-iterms", {data:[{}],fetch:{},mutations:void 0});
