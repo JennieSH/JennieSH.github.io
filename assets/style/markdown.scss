@@ -1,5 +1,5 @@
 $gray-500: #6b7280;
-$gray-100: #f3f4f6;
+$gray-100: #eee;
 
 // for <code> tag which is under <p> and <li>.
 %code-block {
@@ -111,7 +111,7 @@ $gray-100: #f3f4f6;
 
   /*
   start - alert area
-*/
+  */
 
   blockquote {
     @apply text-alert-default-text bg-alert-default-bg  border-alert-default-border dark:bg-opacity-80;
