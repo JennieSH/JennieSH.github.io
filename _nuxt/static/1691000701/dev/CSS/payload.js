@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/CSS", {data:[{}],fetch:{},mutations:void 0});
