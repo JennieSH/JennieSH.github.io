@@ -1,8 +1,8 @@
 <template>
-  <div class="mode-switch" @click="toggleThemeMode">
+  <button class="mode-switch" @click="toggleThemeMode">
     <SvgIcon v-show="isDarkMode" class="moon" name="moon" />
     <span v-show="!isDarkMode" class="sun"></span>
-  </div>
+  </button>
 </template>
 
 <script lang="ts">
@@ -26,12 +26,12 @@ export default defineComponent({
 $sun: #ffd501;
 
 .mode-switch {
-  @apply w-6 h-6;
+  @apply w-6 h-6 flex justify-center items-center;
 
   .sun {
-    @apply inline-block w-full h-full rounded-full bg-yellow-300;
+    @apply inline-block w-[70%] h-[70%] rounded-full bg-yellow-300;
 
-    box-shadow: 0 0 4px 1px $sun;
+    box-shadow: 0 0 6px 1px $sun;
   }
 
   .moon {
