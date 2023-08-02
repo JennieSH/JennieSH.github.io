@@ -1,7 +1,7 @@
 ---
 title: "[Note] WebRTC 與他的名詞們"
 fileName: "webrtc"
-description: "WebRTC 不只 APP 可以使用，同樣 Web 也可以實作唷！主要介紹 WebRTC 與之相關的名詞和連接流程。"
+description: "WebRTC 不只 APP 可以使用，同樣 Web 也可以實作唷！介紹 WebRTC 與之相關的名詞和連接流程。"
 createdAt: 2023-05-05
 updatedAt: 2023-05-05
 tags:
