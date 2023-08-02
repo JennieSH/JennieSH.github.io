@@ -18,21 +18,19 @@ tags:
 
 身為一位工程師，日常都需要跟指令列打交道，加上筆者是微顏控，需要有美美的 command line 環境，所以對 Terminal 選擇有點挑剔，轉換成 Warp 前，是使用 iTerms2 + oh-my-zsh，調成喜歡的樣式。
 
-![iTerms2](https://hackmd.io/_uploads/B1VDIHSin.png)
+![iTerms2](https://hackmd.io/_uploads/BJwvkV_sh.png)
 
 <br/>
 
 Warp 預設樣式已經有個 70 分，highlight 等配色都很舒服，加上強大其他功能，如果對介面沒特別要求，基本就開箱即用。
 
-![warp](https://hackmd.io/_uploads/rkBXqBSo3.png)
+![warp](https://hackmd.io/_uploads/rJXMJ4_j3.png)
 
 <br/>
 
 但對於用習慣 iTerms2 樣式和設定，Warp 預設已經滿足不了筆者了，手邊公司電腦有參考 [How to Configure Starship to Look Exactly Like P10K](https://dev.to/therubberduckiee/how-to-configure-starship-to-look-exactly-like-p10k-zsh-warp-h9h) 做設定，結果也是挺滿意的，但因為 iterms2 的關係， zsh config 留有 Powerlevel10k 相關設定，每次只要開啟 Warp，最上方的 prompt 就會一直跳出不支援 Powerlevel10k 提示，有點擾人 _(後來發現可在 `.zshrc` 檔案中，寫 Terminal 判斷，去關掉提示)_。
 
 ![starship](https://hackmd.io/_uploads/SJCZbPSo3.png)
-
-<br/>
 
 好消息是新版本 [(v0.2023.06.20.08.04)](https://docs.warp.dev/getting-started/changelog#2023.06.20-v0.2023.06.20.08.04) 的 Warp，可以支援 Powerlevel10k 了！剛好趁這次機會幫自己的電腦設定一下 Warp 樣式。
 
@@ -75,11 +73,11 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 $exec zsh
 ```
 
-## 設定 `p10k` config
+## 設定 p10k config
 
 接下來會有一系列 icon 有無正常顯示問題和 command line 樣式設定，依實際情況和需求回答即可。
 
-![`p10k` config](https://hackmd.io/_uploads/HkXr5Prs2.png)
+![p10k config](https://hackmd.io/_uploads/HkXr5Prs2.png)
 
 :::spoiler 筆者設定參考
 
@@ -100,11 +98,12 @@ $exec zsh
 > Q11. Enable Transient Prompt? `(n) No.`
 > Q12. Instant Prompt Mode? `(1) Verbose (recommended).`
 > Q13. Apply changes to ~/.zshrc? `y`
-> :::
+
+:::
 
 <br/>
 
-有需要再客製化 p10k prompt，可以輸入：
+有需要再重新客製化 p10k prompt，可以輸入：
 
 ```bash
 $vi ~/.p10k.zsh
@@ -114,13 +113,13 @@ $vi ~/.p10k.zsh
 
 Warp 預設提供 theme 很少，如果要客製化 theme，可以到 [theme repository](https://github.com/warpdotdev/themes) 挑選自己喜歡的主題，更多 theme 設定可以參考 [Custom Themes](https://docs.warp.dev/appearance/custom-themes)。
 
-### 建立 themes 資料夾
+### Step 1. 建立 themes 資料夾
 
 ```bash
 $mkdir -p ~/.warp/themes/
 ```
 
-### 建立 theme yaml
+### Step 2. 建立 theme yaml
 
 ```bash
 $cd ~/.warp/themes/
@@ -173,7 +172,7 @@ terminal_colors:
     yellow: "#ffcc66"
 ```
 
-### 重啟 warp
+### Step 3. 重啟 warp
 
 如果主題沒有套用，請手動至 `Appearance` -> 點選 `Current theme` -> 選擇剛剛建立的主題
 
@@ -221,7 +220,8 @@ terminal_colors:
 > - [Prompt in one line](https://github.com/warpdotdev/Warp/issues/2851#issuecomment-1625048694)
 > - [powerlevel10k support](https://github.com/warpdotdev/Warp/issues/2851#issuecomment-1625048694)
 > - [Prompt issue with oh My Zsh and PowerLevel10k](https://github.com/warpdotdev/Warp/issues/3387)
->   :::
+
+:::
 
 ## 結語
 
