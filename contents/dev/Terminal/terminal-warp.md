@@ -3,7 +3,7 @@ title: "客製化 Terminal - Warp + Powerlevel10k"
 fileName: "terminal-warp"
 description: "入坑 Warp，第一步就是客製化它！"
 createdAt: 2023-08-01
-updatedAt: 2023-08-01
+updatedAt: 2023-08-09
 tags:
   - MacOS
   - Warp
@@ -34,7 +34,7 @@ Warp 預設樣式已經有個 70 分，highlight 等配色都很舒服，加上�
 
 <br/>
 
-不過好消息是新版本 [(v0.2023.06.20.08.04)](https://docs.warp.dev/getting-started/changelog#2023.06.20-v0.2023.06.20.08.04) 的 Warp，可以支援 Powerlevel10k 了！剛好趁這次機會幫自己的電腦設定一下 Warp 樣式。
+好消息是新版本 [(v0.2023.06.20.08.04)](https://docs.warp.dev/getting-started/changelog#2023.06.20-v0.2023.06.20.08.04) 的 Warp，可以支援 Powerlevel10k 了！剛好趁這次機會幫自己的電腦設定一下 Warp 樣式。
 
 ## 安裝 warp
 
@@ -69,23 +69,40 @@ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 
 如果之前有安裝過，記得 pull 最新版本，可參考 [p10k repo](https://github.com/romkatv/powerlevel10k#how-do-i-update-powerlevel10k)。
 
-## 重新執行 zsh（Z Shell）
+## 修改 zsh 主題 (zsh theme)
 
 ```bash
-$exec zsh
+$vim ~/.zshrc
+```
+
+找到 `ZSH_THEME="robbyrussell"` 這行，先輸入 `i` 進入 insert 模式，將 `robbyrussell` 改為 `powerlevel10k/powerlevel10k`，按 `esc` 結束編輯，輸入 `wq`，存檔離開。
+
+```text
+...
+
+## 修改 theme 的名稱為 powerlevel10k/powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+...
+```
+
+修改完後，重新執行 `.zshrc` 設定檔：
+
+```bash
+source ~/.zshrc
 ```
 
 ## 設定 p10k config
 
 接下來會有一系列 icon 有無正常顯示問題和 command line 樣式設定，依實際情況和需求回答即可。
 
-![p10k config](https://hackmd.io/_uploads/HkXr5Prs2.png)
+![`p10k` config](https://hackmd.io/_uploads/HkXr5Prs2.png)
 
 :::spoiler 筆者設定參考
 
 因為之前已在 iTerm2 那邊設定過 `p10k` config 了，所以再輸入完 `exec zsh`，就直接顯示當初設定的樣式了，附上當時 iTerm2 設定選項供參考。
 
-![](https://hackmd.io/_uploads/HkKHjvHo3.png)
+![exec zsh](https://hackmd.io/_uploads/HkKHjvHo3.png)
 
 > Q1. Prompt Style? `(3) Rainbow.`
 > Q2. Character Set? `(1) Unicode.`
@@ -105,7 +122,7 @@ $exec zsh
 
 <br/>
 
-有需要再重新客製化 p10k prompt，可以輸入：
+有需要再調整 p10k prompt，可以輸入：
 
 ```bash
 $vi ~/.p10k.zsh
@@ -113,21 +130,23 @@ $vi ~/.p10k.zsh
 
 ## 修改 Warp 的 theme
 
-Warp 預設提供 theme 很少，如果要客製化 theme，可以到 [theme repository](https://github.com/warpdotdev/themes) 挑選自己喜歡的主題，更多 theme 設定可以參考 [Custom Themes](https://docs.warp.dev/appearance/custom-themes)。
+Warp 預設提供主題很少，如果要客製化主題，可以到 [theme repository](https://github.com/warpdotdev/themes) 挑選喜歡的主題，更多主題設定可以參考 [Custom Themes](https://docs.warp.dev/appearance/custom-themes)。
 
-### Step 1. 建立 themes 資料夾
+### Step 1. 新增 themes 資料夾
 
 ```bash
 $mkdir -p ~/.warp/themes/
 ```
 
-### Step 2. 建立 theme yaml
+進入剛建立的 themes 資料夾：
 
 ```bash
 $cd ~/.warp/themes/
 ```
 
-主題的資料夾，依據自己選擇命名，筆者是選擇 [`tomorrow-night-eighties`](https://github.com/warpdotdev/themes/blob/fd69e302ba2cd510846644f5e75d00ee4985ee1e/base16/base16_tomorrow_night_eighties.yaml#L4)：
+### Step 2. 新增 theme yaml
+
+再建立一個主題的資料夾，依據自己選擇命名，筆者是選擇 [`tomorrow-night-eighties`](https://github.com/warpdotdev/themes/blob/fd69e302ba2cd510846644f5e75d00ee4985ee1e/base16/base16_tomorrow_night_eighties.yaml#L4)：
 
 ```bash
 # mkdir <theme-folder-name>
@@ -139,7 +158,7 @@ $mkdir tomorrow-night-eighties
 $cd tomorrow-night-eighties
 ```
 
-新增 yaml 設定：
+編輯 yaml 設定：
 
 ```bash
 # vi <theme-folder-name>
@@ -176,7 +195,7 @@ terminal_colors:
 
 ### Step 3. 重啟 warp
 
-如果主題沒有套用，請手動至 `Appearance` -> 點選 `Current theme` -> 選擇剛剛建立的主題
+如果主題沒有套用，請手動至 `Appearance` -> 點選 `Current theme` -> 選擇剛剛建立的主題。
 
 ![](https://hackmd.io/_uploads/r1y05uBjn.png)
 ![](https://hackmd.io/_uploads/SkZEiOHo3.png)
