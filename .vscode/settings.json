@@ -5,8 +5,8 @@
   "eslint.alwaysShowStatus": true,
   // tell the ESLint plugin to run on save
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
 
   // stylelint settings
@@ -15,23 +15,24 @@
   "scss.validate": false,
   "stylelint.config": {
     "rules": {
-      "at-rule-no-unknown": [true, {
-        "ignoreAtRules": [
-          "extend",
-          "tailwind",
-          "screen",
-          "apply",
-          "layer",
-          "variants",
-          "responsive"
-        ]
-      }],
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "extend",
+            "tailwind",
+            "screen",
+            "apply",
+            "layer",
+            "variants",
+            "responsive"
+          ]
+        }
+      ]
     }
   },
-  
-  "blueprint.templatesPath": [
-    ".vscode/blueprint-templates"
-  ],
+
+  "blueprint.templatesPath": [".vscode/blueprint-templates"],
 
   "cSpell.words": [
     "hljs",
@@ -41,15 +42,14 @@
     "noreferrer",
     "noopener",
     "linkify"
-
   ],
   "cSpell.ignorePaths": [
-    "node_modules",        // this will ignore anything the node_modules directory
-    ".vscode/**",    
-    ".git",                // Ignore the .git directory
+    "node_modules", // this will ignore anything the node_modules directory
+    ".vscode/**",
+    ".git", // Ignore the .git directory
     "package.json",
     "tsconfig.json",
     "nuxt.config.js",
-    "*.md",
-],
+    "*.md"
+  ]
 }
