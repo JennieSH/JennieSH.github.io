@@ -3,7 +3,7 @@ title: "Mac 環境、工具建置"
 fileName: "mac-setup"
 description: "記錄剛拿到新電腦時，如何一步步調教成自己的熟悉開發環境！"
 createdAt: 2022-11-21
-updatedAt: 2022-11-21
+updatedAt: 2024-05-03
 tags:
   - MacOS
   - Homebrew
@@ -80,7 +80,16 @@ brew install --cask google-chrome
 brew install git
 ```
 
-## VS code
+## iTerms2 + oh-my-zsh
+
+- **iTerms2** 比 MAC 原生的 Terminal 提供[更多功能](https://apple.stackexchange.com/questions/25143/what-is-the-difference-between-iterm2-and-terminal)，可取代原生的終端機使用
+- **oh-my-zsh** 為 zsh 的 framework，可用來管理 zsh 設定
+
+主要會安裝這兩個組合的最大原因，是為了美美的 command line 環境！！每次輸入指令時候，心情就會非常美麗～～~~我的快樂就是這麼樸實無華~~
+
+p.s. 因為步驟比較多，設定會另外開一篇文章記錄
+
+## [VS code](https://code.visualstudio.com/)
 
 微軟家的免費 IDE，另外常見 IDE 還有 `WebStorm`、`Sublime` 等，一樣選擇自己喜歡的安裝即可～
 
@@ -106,14 +115,14 @@ brew install nvm
 
 1. **新建 `.nvm` 目錄**
 
-```
-mkdir ~/.nvm
+```bash
+$mkdir ~/.nvm
 ```
 
 2. **設定 `/.zshrc ` 配置文件**
 
-```
-vim ~/.zshrc
+```bash
+$vim ~/.zshrc
 ```
 
 先輸入 `i` 進入編輯，再貼上下面這段，輸入 `:wq`，存檔後離開
@@ -126,8 +135,8 @@ export NVM_DIR="$HOME/.nvm"
 
 3. **使用 `source` 重新執行初始化的配置**
 
-```
-source ~/.zshrc
+```bash
+$source ~/.zshrc
 ```
 
 ### 管理 node.js 版本
@@ -144,18 +153,9 @@ node -v # 查看目前使用的版本
 
 套件管理工具， 常見的有 `npm`、`pnpm` 等，可擇一安裝使用
 
+```bash
+$brew install yarn
 ```
-brew install yarn
-```
-
-## iTerms2 + oh-my-zsh
-
-- **iTerms2** 比 MAC 原生的 Terminal 提供[更多功能](https://apple.stackexchange.com/questions/25143/what-is-the-difference-between-iterm2-and-terminal)，可取代原生的終端機使用
-- **oh-my-zsh** 為 zsh 的 framework，可用來管理 zsh 設定
-
-主要會安裝這兩個組合的最大原因，是為了美美的 command line 環境！！每次輸入指令時候，心情就會非常美麗～～~~我的快樂就是這麼樸實無華~~
-
-p.s. 因為步驟比較多，設定會另外開一篇文章記錄
 
 ## 參考資料
 
