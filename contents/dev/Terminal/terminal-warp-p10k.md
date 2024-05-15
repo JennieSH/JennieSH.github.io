@@ -1,6 +1,6 @@
 ---
 title: "客製化 Terminal - Warp + Powerlevel10k"
-fileName: "terminal-warp"
+fileName: "terminal-warp-p10k"
 description: "入坑 Warp，第一步就是客製化它！"
 createdAt: 2023-08-01
 updatedAt: 2023-08-09
