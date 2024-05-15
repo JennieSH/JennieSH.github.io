@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/NPM/braft-editor", {data:[{}],fetch:{},mutations:void 0});
