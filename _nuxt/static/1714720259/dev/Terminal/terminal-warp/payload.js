@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/dev/Terminal/terminal-warp", {data:[{}],fetch:{},mutations:void 0});
