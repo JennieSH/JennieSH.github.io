@@ -59,7 +59,7 @@ const Editor = () => {
 
 針對環境和 `braft-editor` 套件的坑，分別做紀錄下來:
 
-### Braft Editor
+### 1. 組件使用問題 - Braft Editor
 
 #### - 繁體翻譯不完全
 
@@ -90,7 +90,7 @@ const Editor = () => {
 
 <br/>
 
-### Vite
+### 工具問題 - Vite
 
 如果有使用 Vite 打包工具來開發，會遇到 `Uncaught ReferenceError: global is not defined` 的問題，可以在 `vite.config.ts` 定義 global
 
@@ -110,7 +110,7 @@ export default defineConfig({
 
 <br/>
 
-### TypeScript
+### 2. 型別問題 - TypeScript
 
 遇到 `Cannot find module 'braft-utils' or its corresponding type declarations.`，需自行為 `braft-utils` 新增型別聲明檔 `(*.d.ts)`
 
@@ -128,7 +128,7 @@ declare module "braft-utils" {
 
 <br/>
 
-### NextJS
+### 3. 環境問題 - NextJS
 
 正常引入 `BraftEditor`，因為 SSR 關係，同時會 Server 和 Client 環境，在 Server 底下是沒有 window，所以會出現 `window is not defined`。
 
@@ -243,8 +243,10 @@ const Editor = () => {
 
 針對後面兩點都有解決方案，但如果需要選擇有持續維護的套件就要慎入，或者主產品是編輯器的，強烈考慮使用 [Lexical](https://lexical.dev/)，是 Facebook 開發維護的，或 [Quill.js](https://quilljs.com/)，目前兩個都有持續更新 :+1:。
 
+<br/>
+
 在 Survey 編輯器期間，發現這其實是一個大坑，主要是很多套件，距離上一次更新都很久了，但其實現在手機各平台版本、瀏覽器版本、前端框架版本一直在推陳出新，如果編輯器版本更新跟不上，簡直是場災難。
 
-當初選擇 `braft-editor` 是因為底層是用 [Draft.js](https://draftjs.org/) 開發，包裝的功能也很完整，且想說如果 `braft-editor` 作者不維護的話，退一步還可以用 [Draft.js](https://draftjs.org/) (Facebook 家的)寫出想要功能，這樣轉移的痛感會比較低，想不到不到一年，Facebook 直接放棄開發 [Draft.js](https://draftjs.org/)，改推 [Lexical](https://lexical.dev/)，人算不如天算！
+<br/>
 
-不過根據朋友從 [Draft.js](https://draftjs.org/) 跳坑到 [Lexical](https://lexical.dev/) 經驗分享，體驗上是給予高度讚賞的，推薦入坑。
+當初選擇 `braft-editor` 是因為底層是用 [Draft.js](https://draftjs.org/) 開發，包裝的功能也很完整，且想說如果 `braft-editor` 作者不維護的話，退一步還可以用 [Draft.js](https://draftjs.org/) (Facebook 家的)寫出想要功能，這樣轉移的痛感會比較低，想不到不到一年，Facebook 直接放棄開發 [Draft.js](https://draftjs.org/)，改推 [Lexical](https://lexical.dev/)，人算不如天算！不過根據朋友從 [Draft.js](https://draftjs.org/) 跳坑到 [Lexical](https://lexical.dev/) 經驗分享，體驗上是給予高度讚賞的，推薦入坑。
