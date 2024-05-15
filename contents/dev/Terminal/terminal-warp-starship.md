@@ -1,6 +1,6 @@
 ---
 title: "客製化 command line - Warp + Starship"
-fileName: "warp-terminal-starship"
+fileName: "terminal-warp-starship"
 description: "入坑 Warp，第一步就是客製化它！ 第二彈 feat. Starship"
 createdAt: 2024-05-16
 updatedAt: 2024-05-16
