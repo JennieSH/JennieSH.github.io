@@ -89,7 +89,7 @@ brew install git
 
 p.s. 因為步驟比較多，設定會另外開一篇文章記錄
 
-## [VS code](https://code.visualstudio.com/)
+## VS code
 
 微軟家的免費 IDE，另外常見 IDE 還有 `WebStorm`、`Sublime` 等，一樣選擇自己喜歡的安裝即可～
 
