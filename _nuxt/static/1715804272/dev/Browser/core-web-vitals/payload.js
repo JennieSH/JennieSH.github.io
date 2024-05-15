@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Browser/core-web-vitals", {data:[{}],fetch:{},mutations:void 0});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Browser", {data:[{}],fetch:{},mutations:void 0});
