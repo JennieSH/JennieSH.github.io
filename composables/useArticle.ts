@@ -1,4 +1,5 @@
 import { useStatic, computed, Ref } from "@nuxtjs/composition-api";
+import dayjs from "dayjs";
 import {
   concatPath,
   getSubjectData,
@@ -34,7 +35,12 @@ const useArticle = () => {
     return useStatic(
       async () => {
         const subjectPath = concatPath([root, category, subject]);
-        const articleMatterList = await getAllArticleMatter(subjectPath);
+        let articleMatterList = await getAllArticleMatter(subjectPath);
+
+        // Sort the articleMatterList by updatedAt from newest to oldest
+        articleMatterList = articleMatterList.sort((a, b) => {
+          return dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf();
+        });
 
         return articleMatterList;
       },
