@@ -26,13 +26,13 @@ GraphQL 是一種用於 API 的查詢語言，可以讓 client 端更彈性去�
 
 ### 1. API endpoints
 
-- `RESTful` 根據類型，會複數個 endpoints
+- `RESTful` 根據資源類型，會有多個 endpoints：
 
   - `/users/<id>`
   - `/users/<id>/posts`
   - `/users/<id>/followers`
 
-- `GraphQL` 只有一個 endpoint
+- `GraphQL` 只有一個 endpoint：
   - `/graphql`
 
 ### 2. Data Fetching
@@ -363,7 +363,7 @@ GraphQL Client 主要工作就是，使用前端寫好的 query 與 server 去�
 5. query 深度和複雜度都會影響整個 query 效能
 6. 搭配 cache 功能的話，需考慮到整個專案設計，避免同資料，更新時間點不同步
 
-## [Apollo + React](https://www.apollographql.com/docs/react/get-started/)
+## Apollo + React
 
 :::info
 **[Demo Code：](https://github.com/JennieSH/graphql-appworks)**
