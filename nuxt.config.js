@@ -38,11 +38,6 @@ export default {
         content: process.env.BASE_URL
       },
       {
-        hid: "keywords",
-        name: "keywords",
-        content: "前端開發、技術部落格、生活、旅遊"
-      },
-      {
         hid: "og:site_name",
         property: "og:site_name",
         content: "傑尼海馬迴｜Jennie DEV"
