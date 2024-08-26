@@ -3,7 +3,7 @@ title: "[Debug] Flutter Image.network() 在 Web 下，圖片會載入失敗"
 fileName: "image-network-cors"
 description: "Flutter 開發之踩坑日記：在 web 開發模式下，使用 Image.network() 圖片會載入失敗。"
 createdAt: 2024-04-14
-updatedAt: 2024-04-14
+updatedAt: 2024-08-26
 tags:
   - Flutter
   - Image
@@ -40,11 +40,11 @@ tags:
 
 主要原因應該是 [CORS 問題](https://github.com/flutter/flutter/issues/73109#issuecomment-790628014)，它可能會受到所使用的 web renderer 影響，解決方向主要有三個：
 
-1. 第一個直接解決根本的 CORS 問題，需要請後端協助修改 headers 相關設定
+1. 直接解決根本的 CORS 問題，需要請後端協助修改 headers 相關設定
 2. 使用代理服務器： 設置一個代理服務器來轉發 client 請求
-3. 第二個方向就是修改 web renderer 設定，下面解法基本是圍繞的第二個方向去解的。
-   > The HTML renderer can load cross-origin images without extra configuration. so you could use these commands to run and build the app
+3. 方向就是修改 web renderer 設定
 
+以下解法基本是圍繞的第三個方向去解的。
 <br/>
 
 當 `--web-renderer=auto`(預設值)，會根據使用者的裝置，自動選擇最適合的 renderer，在 desktop browser 下，預設使用的就是 CanvasKit，需要指定成 `html`，才能解決。
