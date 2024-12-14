@@ -99,8 +99,9 @@ const processHtml = (
 
   subTitleList.forEach((title) => {
     const titleStr = title.replace(/<h2>|<\/h2>/g, "");
+    const tocTitleStr = titleStr.replace(/<\/?(s|a)>/g, "");
 
-    toc.subtitles.push(titleStr);
+    toc.subtitles.push(tocTitleStr);
     htmlContent = htmlContent.replace(
       title,
       `<h2 id="${titleStr}" title="${titleStr}"><a href="#${titleStr}">${titleStr}</a></h2>`
