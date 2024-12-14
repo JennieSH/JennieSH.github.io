@@ -72,7 +72,7 @@ $gray-100: #eee;
   }
 
   li {
-    @apply pl-2 py-1 list-disc list-inside;
+    @apply pl-2 py-1 list-inside;
 
     > code {
       @extend %code-block;
@@ -86,6 +86,16 @@ $gray-100: #eee;
       list-style-type: circle;
     }
   }
+
+  ul > li {
+    @apply list-disc;
+  }
+
+  ol > li {
+    @apply list-decimal;
+  }
+
+
 
   // table
   table {
