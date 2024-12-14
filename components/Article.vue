@@ -20,6 +20,11 @@
         <SvgIcon class="info-icon mr-2" name="calendar" />
         {{ createdAt }}
       </div>
+
+      <div class="info-item">
+        <SvgIcon class="info-icon mr-2" name="clock" />
+        {{ readingTime }} min read
+      </div>
     </div>
 
     <!-- Article Content -->
@@ -42,8 +47,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from "@nuxtjs/composition-api";
-import { FrontMatter } from "@/types/content";
+import { ArticleData } from "@/types/content";
 import { formatTime } from "@/utils/format";
+import { calculateReadingTime } from "@/utils/parser";
 
 export default defineComponent({
   name: "Article",
@@ -57,7 +63,7 @@ export default defineComponent({
       default: ""
     },
     articleMatter: {
-      type: Object as PropType<FrontMatter>,
+      type: Object as PropType<ArticleData>,
       default: null
     }
   },
@@ -69,11 +75,15 @@ export default defineComponent({
     const updatedAt = computed(() =>
       formatTime(props.articleMatter.info.updatedAt)
     );
+    const readingTime = computed(() =>
+      calculateReadingTime(props.articleMatter.wordCount)
+    );
 
     return {
       tagList,
       createdAt,
-      updatedAt
+      updatedAt,
+      readingTime
     };
   }
 });

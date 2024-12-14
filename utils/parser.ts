@@ -114,6 +114,28 @@ const processHtml = (
 };
 
 /**
+ * count the number of words from markdownText
+ * @param markdownText
+ */
+const getWordCount = (markdownText: string): number => {
+  const textContent = markdownText
+    .replace(/[#>*_`~\-+[\]().!]|<\/?[^>]+(>|$)|\s+/g, " ")
+    .trim();
+
+  return textContent.split(" ").length;
+};
+
+/**
+ * calculate the reading time based on the word count
+ * @param wordCount
+ * @param wordsPerMinute
+ */
+const calculateReadingTime = (
+  wordCount: number,
+  wordsPerMinute: number = 250
+): number => Math.ceil(wordCount / wordsPerMinute);
+
+/**
  * @example
  * "dev" => [ { name: 'javascript', articleList: ['closure.md', 'hoisting.md'] } ]
  */
@@ -147,12 +169,20 @@ const getArticleData = (articlePath: string): ArticleData => {
   const { info, content } = getFrontMatter(articlePath);
   const rawHtmlContent = parseMarkdownToHtml(content);
   const { toc, htmlContent } = processHtml(rawHtmlContent);
+  const wordCount = getWordCount(content);
 
   return {
     info,
     content: htmlContent,
-    toc
+    toc,
+    wordCount
   };
 };
 
-export { concatPath, getSubjectData, getAllArticleMatter, getArticleData };
+export {
+  concatPath,
+  calculateReadingTime,
+  getSubjectData,
+  getAllArticleMatter,
+  getArticleData
+};

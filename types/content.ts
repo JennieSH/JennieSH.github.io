@@ -20,6 +20,7 @@ interface FrontMatter {
 
 interface ArticleData extends FrontMatter {
   toc: ToC;
+  wordCount: number;
 }
 
 interface SubjectData {
