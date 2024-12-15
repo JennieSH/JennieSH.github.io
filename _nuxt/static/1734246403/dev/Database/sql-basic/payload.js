@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Database/sql-basic", {data:[{}],fetch:{},mutations:void 0});

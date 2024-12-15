@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Database", {data:[{}],fetch:{},mutations:void 0});
