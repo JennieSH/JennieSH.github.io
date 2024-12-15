@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Vue/vue-computed-watchers", {data:[{}],fetch:{},mutations:void 0});
