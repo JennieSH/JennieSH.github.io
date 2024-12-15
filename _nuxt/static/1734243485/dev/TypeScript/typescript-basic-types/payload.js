@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/TypeScript/typescript-basic-types", {data:[{}],fetch:{},mutations:void 0});

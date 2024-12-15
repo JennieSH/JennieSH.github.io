@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Test/vitest-mocking", {data:[{}],fetch:{},mutations:void 0});

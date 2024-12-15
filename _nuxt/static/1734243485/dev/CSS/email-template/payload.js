@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/CSS/email-template", {data:[{}],fetch:{},mutations:void 0});

@@ -1,0 +1,455 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh-tw" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh-tw%22%7D%7D">
+  <head>
+    <title>Vitest - 語法與常用 Matchers｜傑尼海馬迴｜Jennie DEV</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" name="format-detection" content="telephone=no"><meta data-n-head="ssr" name="google-site-verification" content="KAONipFn6ticaFtY32RIDOQP-5J9AcuoHlXoV8mzBRc"><meta data-n-head="ssr" data-hid="og:site_name" property="og:site_name" content="傑尼海馬迴｜Jennie DEV"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:image" property="og:image" content="/favicon.ico"><meta data-n-head="ssr" data-hid="og:image:width" property="og:image:width" content="300"><meta data-n-head="ssr" data-hid="og:image:height" property="og:image:height" content="300"><meta data-n-head="ssr" data-hid="description" name="description" content="語法與常用 Matchers 介紹"><meta data-n-head="ssr" data-hid="og:title" name="og:title" content="Vitest - 語法與常用 Matchers｜傑尼海馬迴｜Jennie DEV"><meta data-n-head="ssr" data-hid="og:description" name="og:description" content="語法與常用 Matchers 介紹"><meta data-n-head="ssr" data-hid="og:url" name="og:url" content="https://jenniesh.github.io/dev/Test/vitest-matchers"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="Test、Vitest"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="/favicon.ico"><link data-n-head="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Lato:wght@400;700&display=swap"><link rel="preload" href="/_nuxt/107c79d.js" as="script"><link rel="preload" href="/_nuxt/6a6c73d.js" as="script"><link rel="preload" href="/_nuxt/3016af5.js" as="script"><link rel="preload" href="/_nuxt/8994050.js" as="script"><link rel="preload" href="/_nuxt/8b51193.js" as="script"><link rel="preload" href="/_nuxt/8e59a34.js" as="script"><style data-vue-ssr-id="54b08540:0 4ec1dd84:0 4ba1b844:0 a57b151a:0 7ca831e9:0 62838aa2:0 781512b7:0 2e855d11:0 0066bdae:0 357a6f66:0 153645fe:0">/*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com*//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}html{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'}hr{height:0;color:inherit}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}::-moz-focus-inner{border-style:none;padding:0}:-moz-focusring{outline:1px dotted ButtonText}:-moz-ui-invalid{box-shadow:none}legend{padding:0}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}fieldset{margin:0;padding:0}ol,ul{list-style:none;margin:0;padding:0}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}body{font-family:inherit;line-height:inherit}*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input:-ms-input-placeholder,textarea:-ms-input-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:-moz-focusring{outline:auto}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*,::after,::before{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity));--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000}.container{width:100%;margin-right:auto;margin-left:auto}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.left-0{left:0}.top-0{top:0}.top-\[14px\]{top:14px}.top-\[-12px\]{top:-12px}.top-\[12px\]{top:12px}.top-\[15\%\]{top:15%}.right-\[-28px\]{right:-28px}.-left-4{left:-1rem}.left-\[-8px\]{left:-8px}.z-10{z-index:10}.m-1{margin:.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mx-8{margin-left:2rem;margin-right:2rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-7{margin-top:1.75rem;margin-bottom:1.75rem}.mx-1{margin-left:.25rem;margin-right:.25rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mx-\[10\%\]{margin-left:10%;margin-right:10%}.my-5{margin-top:1.25rem;margin-bottom:1.25rem}.my-10{margin-top:2.5rem;margin-bottom:2.5rem}.mr-2{margin-right:.5rem}.mt-4{margin-top:1rem}.mr-1{margin-right:.25rem}.mt-8{margin-top:2rem}.ml-1{margin-left:.25rem}.ml-2{margin-left:.5rem}.mb-2{margin-bottom:.5rem}.mb-10{margin-bottom:2.5rem}.mt-6{margin-top:1.5rem}.mt-5{margin-top:1.25rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.hidden{display:none}.h-4{height:1rem}.h-full{height:100%}.h-1{height:.25rem}.h-8{height:2rem}.h-6{height:1.5rem}.h-\[70\%\]{height:70%}.h-5{height:1.25rem}.h-\[fit-content\]{height:-webkit-fit-content;height:-moz-fit-content;height:fit-content}.h-7{height:1.75rem}.h-60{height:15rem}.h-3{height:.75rem}.max-h-screen{max-height:100vh}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-1\/5{width:20%}.w-full{width:100%}.w-16{width:4rem}.w-4\/5{width:80%}.w-8{width:2rem}.w-6{width:1.5rem}.w-\[70\%\]{width:70%}.w-5{width:1.25rem}.w-56{width:14rem}.w-7{width:1.75rem}.w-60{width:15rem}.w-\[fit-content\]{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.w-3{width:.75rem}.flex-initial{flex:0 1 auto}.flex-none{flex:none}.flex-grow{flex-grow:1}.-rotate-45{--tw-rotate:-45deg;transform:var(--tw-transform)}.rotate-45{--tw-rotate:45deg;transform:var(--tw-transform)}.transform{transform:var(--tw-transform)}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-evenly{justify-content:space-evenly}.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-r-full{border-top-right-radius:9999px;border-bottom-right-radius:9999px}.border-b-2{border-bottom-width:2px}.border-l-4{border-left-width:4px}.border-b{border-bottom-width:1px}.border-transparent{border-color:transparent}.border-gray-200{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.border-light-primary{--tw-border-opacity:1;border-color:rgba(33,90,109,var(--tw-border-opacity))}.bg-light-block{--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity))}.bg-light-bg{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgba(249,250,251,var(--tw-bg-opacity))}.bg-light-title{--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.bg-light-primary{--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}.bg-light-gray{--tw-bg-opacity:1;background-color:rgba(113,113,122,var(--tw-bg-opacity))}.p-4{padding:1rem}.p-8{padding:2rem}.px-8{padding-left:2rem;padding-right:2rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-2{padding-left:.5rem;padding-right:.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.pl-1{padding-left:.25rem}.pl-2{padding-left:.5rem}.pl-3{padding-left:.75rem}.pt-1{padding-top:.25rem}.pl-0{padding-left:0}.pl-6{padding-left:1.5rem}.text-center{text-align:center}.text-sm{font-size:.875rem;line-height:1.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-xs{font-size:.75rem;line-height:1rem}.text-\[13px\]{font-size:13px}.text-\[3rem\]{font-size:3rem}.font-bold{font-weight:700}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.capitalize{text-transform:capitalize}.italic{font-style:italic}.tracking-wide{letter-spacing:.025em}.text-dark-gray{--tw-text-opacity:1;color:rgba(169,169,169,var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}.text-light-title{--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.text-light-primary{--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-common-gray{--tw-text-opacity:1;color:rgba(113,113,122,var(--tw-text-opacity))}.shadow{--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.transition{transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms}.delay-500{transition-delay:.5s}.duration-1000{transition-duration:1s}.duration-100{transition-duration:.1s}.hover\:border-common-active:hover{--tw-border-opacity:1;border-color:rgba(146,199,163,var(--tw-border-opacity))}.hover\:bg-light-block:hover{--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity))}.hover\:text-common-active:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.hover\:text-gray-600:hover{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.dark .dark\:bg-dark-black{--tw-bg-opacity:1;background-color:rgba(39,39,42,var(--tw-bg-opacity))}.dark .dark\:bg-dark-block{--tw-bg-opacity:1;background-color:rgba(30,31,37,var(--tw-bg-opacity))}.dark .dark\:text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.dark .dark\:text-dark-gray{--tw-text-opacity:1;color:rgba(169,169,169,var(--tw-text-opacity))}.dark .dark\:text-gray-50{--tw-text-opacity:1;color:rgba(249,250,251,var(--tw-text-opacity))}.dark .dark\:text-dark-text{--tw-text-opacity:1;color:rgba(240,240,240,var(--tw-text-opacity))}@media (min-width:768px){.md\:mt-10{margin-top:2.5rem}.md\:hidden{display:none}.md\:px-16{padding-left:4rem;padding-right:4rem}}@media (min-width:1024px){.lg\:block{display:block}}@media (min-width:1280px){.xl\:block{display:block}.xl\:px-16{padding-left:4rem;padding-right:4rem}.xl\:px-48{padding-left:12rem;padding-right:12rem}}/*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com*//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}html{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'}hr{height:0;color:inherit}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}::-moz-focus-inner{border-style:none;padding:0}:-moz-focusring{outline:1px dotted ButtonText}:-moz-ui-invalid{box-shadow:none}legend{padding:0}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}fieldset{margin:0;padding:0}ol,ul{list-style:none;margin:0;padding:0}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}body{font-family:inherit;line-height:inherit}*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input:-ms-input-placeholder,textarea:-ms-input-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:-moz-focusring{outline:auto}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*,::after,::before{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity));--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000}.container{width:100%;margin-right:auto;margin-left:auto}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.left-0{left:0}.top-0{top:0}.top-\[14px\]{top:14px}.top-\[-12px\]{top:-12px}.top-\[12px\]{top:12px}.top-\[15\%\]{top:15%}.right-\[-28px\]{right:-28px}.-left-4{left:-1rem}.left-\[-8px\]{left:-8px}.z-10{z-index:10}.m-1{margin:.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mx-8{margin-left:2rem;margin-right:2rem}.my-4{margin-top:1rem;margin-bottom:1rem}.my-7{margin-top:1.75rem;margin-bottom:1.75rem}.mx-1{margin-left:.25rem;margin-right:.25rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mx-\[10\%\]{margin-left:10%;margin-right:10%}.my-5{margin-top:1.25rem;margin-bottom:1.25rem}.my-10{margin-top:2.5rem;margin-bottom:2.5rem}.mr-2{margin-right:.5rem}.mt-4{margin-top:1rem}.mr-1{margin-right:.25rem}.mt-8{margin-top:2rem}.ml-1{margin-left:.25rem}.ml-2{margin-left:.5rem}.mb-2{margin-bottom:.5rem}.mb-10{margin-bottom:2.5rem}.mt-6{margin-top:1.5rem}.mt-5{margin-top:1.25rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.hidden{display:none}.h-4{height:1rem}.h-full{height:100%}.h-1{height:.25rem}.h-8{height:2rem}.h-6{height:1.5rem}.h-\[70\%\]{height:70%}.h-5{height:1.25rem}.h-\[fit-content\]{height:-webkit-fit-content;height:-moz-fit-content;height:fit-content}.h-7{height:1.75rem}.h-60{height:15rem}.h-3{height:.75rem}.max-h-screen{max-height:100vh}.min-h-screen{min-height:100vh}.w-4{width:1rem}.w-1\/5{width:20%}.w-full{width:100%}.w-16{width:4rem}.w-4\/5{width:80%}.w-8{width:2rem}.w-6{width:1.5rem}.w-\[70\%\]{width:70%}.w-5{width:1.25rem}.w-56{width:14rem}.w-7{width:1.75rem}.w-60{width:15rem}.w-\[fit-content\]{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.w-3{width:.75rem}.flex-initial{flex:0 1 auto}.flex-none{flex:none}.flex-grow{flex-grow:1}.-rotate-45{--tw-rotate:-45deg;transform:var(--tw-transform)}.rotate-45{--tw-rotate:45deg;transform:var(--tw-transform)}.transform{transform:var(--tw-transform)}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-evenly{justify-content:space-evenly}.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-r-full{border-top-right-radius:9999px;border-bottom-right-radius:9999px}.border-b-2{border-bottom-width:2px}.border-l-4{border-left-width:4px}.border-b{border-bottom-width:1px}.border-transparent{border-color:transparent}.border-gray-200{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.border-light-primary{--tw-border-opacity:1;border-color:rgba(33,90,109,var(--tw-border-opacity))}.bg-light-block{--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity))}.bg-light-bg{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgba(249,250,251,var(--tw-bg-opacity))}.bg-light-title{--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.bg-light-primary{--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}.bg-light-gray{--tw-bg-opacity:1;background-color:rgba(113,113,122,var(--tw-bg-opacity))}.p-4{padding:1rem}.p-8{padding:2rem}.px-8{padding-left:2rem;padding-right:2rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-2{padding-left:.5rem;padding-right:.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.pl-1{padding-left:.25rem}.pl-2{padding-left:.5rem}.pl-3{padding-left:.75rem}.pt-1{padding-top:.25rem}.pl-0{padding-left:0}.pl-6{padding-left:1.5rem}.text-center{text-align:center}.text-sm{font-size:.875rem;line-height:1.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-xs{font-size:.75rem;line-height:1rem}.text-\[13px\]{font-size:13px}.text-\[3rem\]{font-size:3rem}.font-bold{font-weight:700}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.capitalize{text-transform:capitalize}.italic{font-style:italic}.tracking-wide{letter-spacing:.025em}.text-dark-gray{--tw-text-opacity:1;color:rgba(169,169,169,var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}.text-light-title{--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.text-light-primary{--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-common-gray{--tw-text-opacity:1;color:rgba(113,113,122,var(--tw-text-opacity))}.shadow{--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.transition{transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:150ms}.delay-500{transition-delay:.5s}.duration-1000{transition-duration:1s}.duration-100{transition-duration:.1s}.page-enter-active,.page-leave-active{transition:opacity .5s}.page-enter,.page-leave-to{opacity:0}.fade-enter-active,.fade-leave-active{transition:opacity 1s}.fade-enter,.fade-leave-to{opacity:0}.slide-enter-active,.slide-leave-active{transform:translateX(0);transition:all .5s ease-in-out}.slide-enter,.slide-leave-to{transform:translateX(-100%)}.slide-reverse-enter-active,.slide-reverse-leave-active{transform:translateX(0);transition:all 1.5s ease-in-out}.slide-reverse-enter,.slide-reverse-leave-to{transform:translateX(100%)}@-webkit-keyframes twinkle{0%{box-shadow:inset -3px 0 0 #ffd311}to{box-shadow:inset -3px 0 0 transparent}}@keyframes twinkle{0%{box-shadow:inset -3px 0 0 #ffd311}to{box-shadow:inset -3px 0 0 transparent}}@-webkit-keyframes swing{0%{transform:translateX(0)}50%{transform:translateX(-5px)}to{transform:translateX(0)}}@keyframes swing{0%{transform:translateX(0)}50%{transform:translateX(-5px)}to{transform:translateX(0)}}@-webkit-keyframes fadeInOut{0%{opacity:1}50%{opacity:.3}to{opacity:1}}@keyframes fadeInOut{0%{opacity:1}50%{opacity:.3}to{opacity:1}}*{scroll-behavior:smooth}.app{display:flex;min-height:100vh;flex-direction:column;justify-content:space-between;--tw-text-opacity:1;color:rgba(39,39,42,var(--tw-text-opacity))}.dark .app{--tw-bg-opacity:1;background-color:rgba(45,45,45,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(240,240,240,var(--tw-text-opacity))}.app{font-family:"DM Sans",sans-serif;transition:background-color .5s ease-in-out}.app ::-moz-selection{--tw-bg-opacity:1;background-color:rgba(146,199,163,var(--tw-bg-opacity));--tw-bg-opacity:0.5}.app ::selection{--tw-bg-opacity:1;background-color:rgba(146,199,163,var(--tw-bg-opacity));--tw-bg-opacity:0.5}.dark .app ::-moz-selection{--tw-bg-opacity:0.7}.dark .app ::selection{--tw-bg-opacity:0.7}.container{flex-grow:1}@media (min-width:1280px){.container{max-width:64rem}}@media (min-width:1536px){.container{max-width:80rem}}h1,h2,h3,h4,h5,h6{font-weight:700}h1{font-size:1.5rem;line-height:2rem}h2{font-size:1.25rem;line-height:1.75rem}h3{padding-top:.25rem;padding-bottom:.25rem}.hover\:border-common-active:hover{--tw-border-opacity:1;border-color:rgba(146,199,163,var(--tw-border-opacity))}.hover\:bg-light-block:hover{--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity))}.hover\:text-common-active:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.hover\:text-gray-600:hover{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.dark .dark\:bg-dark-black{--tw-bg-opacity:1;background-color:rgba(39,39,42,var(--tw-bg-opacity))}.dark .dark\:bg-dark-block{--tw-bg-opacity:1;background-color:rgba(30,31,37,var(--tw-bg-opacity))}.dark .dark\:text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.dark .dark\:text-dark-gray{--tw-text-opacity:1;color:rgba(169,169,169,var(--tw-text-opacity))}.dark .dark\:text-gray-50{--tw-text-opacity:1;color:rgba(249,250,251,var(--tw-text-opacity))}.dark .dark\:text-dark-text{--tw-text-opacity:1;color:rgba(240,240,240,var(--tw-text-opacity))}@media (min-width:768px){.md\:mt-10{margin-top:2.5rem}.md\:hidden{display:none}.md\:px-16{padding-left:4rem;padding-right:4rem}}@media (min-width:1024px){.lg\:block{display:block}}@media (min-width:1280px){.xl\:block{display:block}.xl\:px-16{padding-left:4rem;padding-right:4rem}.xl\:px-48{padding-left:12rem;padding-right:12rem}}pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: GitHub Dark
+  Description: Dark theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-dark
+  Current colors taken from GitHub's CSS
+*/.hljs{color:#c9d1d9;background:#0d1117}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#ff7b72}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#d2a8ff}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#79c0ff}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#a5d6ff}.hljs-built_in,.hljs-symbol{color:#ffa657}.hljs-code,.hljs-comment,.hljs-formula{color:#8b949e}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#7ee787}.hljs-subst{color:#c9d1d9}.hljs-section{color:#1f6feb;font-weight:700}.hljs-bullet{color:#f2cc60}.hljs-emphasis{color:#c9d1d9;font-style:italic}.hljs-strong{color:#c9d1d9;font-weight:700}.hljs-addition{color:#aff5b4;background-color:#033a16}.hljs-deletion{color:#ffdcd7;background-color:#67060c}.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}header[data-v-98ec6cc0]{display:flex;align-items:center;justify-content:space-between;padding:1rem}@media (min-width:768px){header[data-v-98ec6cc0]{padding-left:4rem;padding-right:4rem}}@media (min-width:1280px){header[data-v-98ec6cc0]{padding-left:12rem;padding-right:12rem}}@media (min-width:1536px){header[data-v-98ec6cc0]{padding-left:20rem;padding-right:20rem}}.logo[data-v-98ec6cc0]{font-size:1.5rem;line-height:2rem;font-weight:700;--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.dark .logo[data-v-98ec6cc0]{--tw-text-opacity:1;color:rgba(252,252,252,var(--tw-text-opacity))}.logo-mb[data-v-98ec6cc0]{display:flex;align-items:center;justify-content:center}.nav-pc[data-v-98ec6cc0]{display:none}@media (min-width:768px){.nav-pc[data-v-98ec6cc0]{display:flex}}.nav-pc li[data-v-98ec6cc0]{margin-left:.25rem;margin-right:.25rem;width:4rem;border-bottom-width:2px;border-color:transparent;text-align:center}.nav-pc li[data-v-98ec6cc0]:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.dark .nav-pc li[data-v-98ec6cc0]{--tw-text-opacity:1;color:rgba(169,169,169,var(--tw-text-opacity))}.dark .nav-pc li[data-v-98ec6cc0]:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.nav-pc a[data-v-98ec6cc0]{display:inline-block;height:100%;width:100%}.nav-pc .active[data-v-98ec6cc0]{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity));font-weight:700;--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.dark .nav-pc .active[data-v-98ec6cc0]{--tw-text-opacity:1;color:rgba(255,212,120,var(--tw-text-opacity))}.nav-mb[data-v-98ec6cc0]{position:absolute;left:0;top:0;z-index:10;height:100%;width:80%;--tw-bg-opacity:1;background-color:rgba(249,250,251,var(--tw-bg-opacity));padding:2rem}.dark .nav-mb[data-v-98ec6cc0]{--tw-bg-opacity:1;background-color:rgba(0,0,0,var(--tw-bg-opacity))}@media (min-width:768px){.nav-mb[data-v-98ec6cc0]{display:none}}.nav-mb li[data-v-98ec6cc0]{margin-bottom:.5rem;cursor:pointer;border-left-width:4px;border-color:transparent;padding-left:.5rem}.nav-mb li[data-v-98ec6cc0]:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.dark .nav-mb li[data-v-98ec6cc0]:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}.nav-mb .active[data-v-98ec6cc0]{--tw-border-opacity:1;border-color:rgba(33,90,109,var(--tw-border-opacity))}.dark .nav-mb .active[data-v-98ec6cc0]{--tw-border-opacity:1;border-color:rgba(255,212,120,var(--tw-border-opacity))}.burger-line[data-v-98ec6cc0],.burger-line[data-v-98ec6cc0]:after,.burger-line[data-v-98ec6cc0]:before{position:absolute;height:.25rem;width:2rem;border-radius:.25rem;transition-duration:.5s}.burger-icon[data-v-98ec6cc0]{position:relative;height:2rem;width:2rem;cursor:pointer;transition-duration:1s}@media (min-width:768px){.burger-icon[data-v-98ec6cc0]{display:none}}.burger-line[data-v-98ec6cc0]{top:14px;--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity));transition-delay:.5s}.dark .burger-line[data-v-98ec6cc0]{--tw-bg-opacity:1;background-color:rgba(252,252,252,var(--tw-bg-opacity))}.burger-line[data-v-98ec6cc0]:before{top:-12px;--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.dark .burger-line[data-v-98ec6cc0]:before{--tw-bg-opacity:1;background-color:rgba(252,252,252,var(--tw-bg-opacity))}.burger-line[data-v-98ec6cc0]:after,.burger-line[data-v-98ec6cc0]:before{content:"";transition:transform .5s,top .5s .5s}.burger-line[data-v-98ec6cc0]:after{top:12px;--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.dark .burger-line[data-v-98ec6cc0]:after{--tw-bg-opacity:1;background-color:rgba(252,252,252,var(--tw-bg-opacity))}.burger-line.open[data-v-98ec6cc0]{background-color:transparent;transition-delay:.5s;transition-duration:.1s}.burger-line.open[data-v-98ec6cc0]:before{top:0;--tw-rotate:-45deg;transform:var(--tw-transform);--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.dark .burger-line.open[data-v-98ec6cc0]:before{--tw-bg-opacity:1;background-color:rgba(255,212,120,var(--tw-bg-opacity))}.burger-line.open[data-v-98ec6cc0]:before{transition:top .5s,transform .5s .5s}.burger-line.open[data-v-98ec6cc0]:after{top:0;--tw-rotate:45deg;transform:var(--tw-transform);--tw-bg-opacity:1;background-color:rgba(33,90,109,var(--tw-bg-opacity))}.dark .burger-line.open[data-v-98ec6cc0]:after{--tw-bg-opacity:1;background-color:rgba(255,212,120,var(--tw-bg-opacity))}.burger-line.open[data-v-98ec6cc0]:after{transition:top .5s,transform .5s .5s}.mode-switch[data-v-18cfa5ea]{display:flex;height:1.5rem;width:1.5rem;align-items:center;justify-content:center}.mode-switch .sun[data-v-18cfa5ea]{display:inline-block;height:70%;width:70%;border-radius:9999px;--tw-bg-opacity:1;background-color:rgba(252,211,77,var(--tw-bg-opacity));box-shadow:0 0 6px 1px #ffd501}.mode-switch .moon[data-v-18cfa5ea]{height:100%;width:100%;--tw-text-opacity:1;color:rgba(229,231,235,var(--tw-text-opacity))}section[data-v-68e56674]{position:fixed;left:0;top:15%;display:none;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;width:14rem;--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity));padding-top:1.25rem;padding-bottom:1.25rem;padding-left:2rem;padding-right:2rem}.dark section[data-v-68e56674]{--tw-bg-opacity:1;background-color:rgba(30,31,37,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(240,240,240,var(--tw-text-opacity))}@media (min-width:1280px){section[data-v-68e56674]{display:block}}@media (min-width:1536px){section[data-v-68e56674]{width:16rem}}section[data-v-68e56674]{transform:translateX(-95%);transition:transform 1.2s ease-in-out}section.show[data-v-68e56674]{transform:translateX(0)}section li[data-v-68e56674]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:.75rem;padding-top:.25rem;font-size:13px}section a[data-v-68e56674]:hover{--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity))}section .title[data-v-68e56674]{margin-bottom:.5rem;padding-left:0;font-size:.875rem;line-height:1.25rem;font-weight:700}section .toc-tab[data-v-68e56674]{position:absolute;top:0;right:-28px;display:flex;height:1.75rem;width:1.75rem;cursor:pointer;align-items:center;justify-content:center;border-top-right-radius:9999px;border-bottom-right-radius:9999px;--tw-bg-opacity:1;background-color:rgba(250,250,250,var(--tw-bg-opacity))}.dark section .toc-tab[data-v-68e56674]{--tw-bg-opacity:1;background-color:rgba(30,31,37,var(--tw-bg-opacity))}.markdown li>code,.markdown p>code{padding:.125rem .25rem;color:#6b7280;background-color:#eee;border-radius:.375rem}.markdown .danger,.markdown .info,.markdown .success,.markdown .warning,.markdown blockquote{margin:1rem 0;padding:.5rem 1rem;border-left:4px solid;border-radius:.25rem}.markdown{max-width:48rem;font-size:.875rem;line-height:1.25rem;line-height:1.625}@media (min-width:1536px){.markdown{max-width:56rem}}.markdown h1{margin-top:1.5rem;margin-bottom:2.5rem;text-align:center;--tw-text-opacity:1;color:rgba(33,90,109,var(--tw-text-opacity))}.dark .markdown h1{--tw-text-opacity:1;color:rgba(252,252,252,var(--tw-text-opacity))}.markdown h2{position:relative;margin-top:4rem;margin-bottom:1rem}.markdown h2:before{position:absolute;left:-16px;--tw-text-opacity:1;color:rgba(146,199,163,var(--tw-text-opacity));content:"»"}.markdown h2 a{--tw-text-opacity:1;color:rgba(44,57,68,var(--tw-text-opacity))}.dark .markdown h2 a{--tw-text-opacity:1;color:rgba(209,213,218,var(--tw-text-opacity))}.markdown h3{margin-top:1.5rem;font-size:16px}.markdown h6{display:none}.markdown a{--tw-text-opacity:1;color:rgba(111,168,129,var(--tw-text-opacity))}.markdown a:hover{border-bottom-width:1px;--tw-border-opacity:1;border-color:rgba(146,199,163,var(--tw-border-opacity))}.markdown img{margin-top:1rem;margin-bottom:1rem}@media (min-width:1536px){.markdown img{width:80%}}.markdown pre{margin-top:1rem;margin-bottom:1rem;white-space:pre-wrap;word-break:break-all;border-radius:.25rem;padding:1rem}@media (min-width:768px){.markdown pre{overflow-wrap:break-word}}.markdown summary{outline:2px solid transparent;outline-offset:2px}.markdown p{margin-top:.75rem;margin-bottom:.75rem;line-height:1.5rem}.markdown li{list-style-position:inside;padding-top:.25rem;padding-bottom:.25rem;padding-left:.5rem}.markdown li p{display:inline}.markdown li>ul>li{list-style-type:circle}.markdown ul>li{list-style-type:disc}.markdown ol>li{list-style-type:decimal}.markdown table{border-width:2px;--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}.markdown table td>:not([hidden])~:not([hidden]),.markdown table tr>:not([hidden])~:not([hidden]){--tw-divide-x-reverse:0;border-right-width:calc(2px * var(--tw-divide-x-reverse));border-left-width:calc(2px * calc(1 - var(--tw-divide-x-reverse)));--tw-divide-opacity:1;border-color:rgba(209,213,219,var(--tw-divide-opacity))}.markdown table td,.markdown table tr{padding-left:.5rem;padding-right:.5rem;padding-top:.25rem;padding-bottom:.25rem}.markdown table tr:nth-child(even){--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}.dark .markdown table tr:nth-child(even){--tw-bg-opacity:0.2}.markdown table thead{border-bottom-width:2px;--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}.markdown table tbody>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(2px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(2px * var(--tw-divide-y-reverse));--tw-divide-opacity:1;border-color:rgba(209,213,219,var(--tw-divide-opacity))}.markdown blockquote{--tw-border-opacity:1;border-color:rgba(102,102,102,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(238,238,238,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(106,114,128,var(--tw-text-opacity))}.dark .markdown blockquote{--tw-bg-opacity:0.8}.markdown .success{--tw-border-opacity:1;border-color:rgba(127,141,124,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(202,217,192,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(51,105,30,var(--tw-text-opacity))}.dark .markdown .success{--tw-bg-opacity:0.9}.markdown .info{--tw-border-opacity:1;border-color:rgba(79,114,138,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(200,218,233,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(83,100,131,var(--tw-text-opacity))}.dark .markdown .info{--tw-bg-opacity:0.9}.markdown .warning{--tw-border-opacity:1;border-color:rgba(211,174,91,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(248,240,210,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(147,115,47,var(--tw-text-opacity))}.dark .markdown .warning{--tw-bg-opacity:0.9}.markdown .danger{--tw-border-opacity:1;border-color:rgba(213,157,164,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(241,222,223,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(164,74,67,var(--tw-text-opacity))}.dark .markdown .danger{--tw-bg-opacity:0.9}.markdown .spoiler{border-radius:.25rem;border-width:1px;border-style:dashed;padding:.5rem}.info[data-v-5c0fb0a4]{display:flex;align-items:center;font-size:.875rem;line-height:1.25rem;font-weight:700;--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.dark .info[data-v-5c0fb0a4]{--tw-text-opacity:1;color:rgba(249,250,251,var(--tw-text-opacity))}.info-item[data-v-5c0fb0a4]{display:flex;align-items:center}.info-link[data-v-5c0fb0a4]{text-transform:uppercase}.info-link[data-v-5c0fb0a4]:hover{--tw-text-opacity:1;color:rgba(111,168,129,var(--tw-text-opacity))}.info-icon[data-v-5c0fb0a4]{display:inline-block;height:1rem;width:1rem;--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.tag[data-v-66ee7d80]{margin:.25rem;border-radius:9999px;--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity));padding-left:.5rem;padding-right:.5rem;padding-top:.25rem;padding-bottom:.25rem;font-size:.75rem;line-height:1rem;letter-spacing:.025em;--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.dark .tag[data-v-66ee7d80]{--tw-bg-opacity:1;background-color:rgba(55,65,81,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(249,250,251,var(--tw-text-opacity))}footer[data-v-301919f7]{display:flex;align-items:center;justify-content:center;padding-top:1rem;padding-bottom:1rem}</style><link rel="preload" href="/_nuxt/static/1734243485/dev/Test/vitest-matchers/state.js" as="script"><link rel="preload" href="/_nuxt/static/1734243485/dev/Test/vitest-matchers/payload.js" as="script"><link rel="preload" href="/_nuxt/static/1734243485/manifest.js" as="script">
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app"><header data-v-98ec6cc0><div class="logo" data-v-98ec6cc0><h1 data-v-98ec6cc0><a href="/" class="nuxt-link-active" data-v-98ec6cc0>Jennie DEV</a></h1></div> <nav data-v-98ec6cc0><ul class="nav-pc" data-v-98ec6cc0><li class="active" data-v-98ec6cc0><a href="/dev" class="nuxt-link-active" data-v-98ec6cc0>Dev</a></li><li data-v-98ec6cc0><a href="/life" data-v-98ec6cc0>Life</a></li><li data-v-98ec6cc0><a href="/" class="nuxt-link-active" data-v-98ec6cc0>About</a></li> <button class="mode-switch ml-1" data-v-18cfa5ea data-v-98ec6cc0><svg xmlns="http://www.w3.org/2000/svg" class="moon icon sprite-icons" style="display:none" data-v-18cfa5ea data-v-18cfa5ea><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-moon" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-moon" data-v-18cfa5ea data-v-18cfa5ea></use></svg> <span class="sun" data-v-18cfa5ea></span></button></ul> <ul class="nav-mb" style="display:none" data-v-98ec6cc0 data-v-98ec6cc0><li class="logo logo-mb" data-v-98ec6cc0><a href="/" class="nuxt-link-active" data-v-98ec6cc0>Jennie DEV</a> <button class="mode-switch ml-2" data-v-18cfa5ea data-v-98ec6cc0><svg xmlns="http://www.w3.org/2000/svg" class="moon icon sprite-icons" style="display:none" data-v-18cfa5ea data-v-18cfa5ea><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-moon" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-moon" data-v-18cfa5ea data-v-18cfa5ea></use></svg> <span class="sun" data-v-18cfa5ea></span></button></li> <li class="active" data-v-98ec6cc0><a href="/dev" class="nuxt-link-active" data-v-98ec6cc0>
+            Dev
+          </a></li><li data-v-98ec6cc0><a href="/life" data-v-98ec6cc0>
+            Life
+          </a></li><li data-v-98ec6cc0><a href="/" class="nuxt-link-active" data-v-98ec6cc0>
+            About
+          </a></li></ul> <div class="burger-icon" data-v-98ec6cc0><div class="burger-line" data-v-98ec6cc0></div></div></nav></header> <main class="flex mx-auto container" data-v-0237b367><section class="show" data-v-68e56674 data-v-0237b367><ul data-v-68e56674><li class="title" data-v-68e56674><a href="#Vitest - 語法與常用 Matchers" title="Vitest - 語法與常用 Matchers" data-v-68e56674>Vitest - 語法與常用 Matchers</a></li> <li data-v-68e56674><a href="#基本語法" title="基本語法" data-v-68e56674>基本語法</a></li><li data-v-68e56674><a href="#斷言語法和常見 Matchers" title="斷言語法和常見 Matchers" data-v-68e56674>斷言語法和常見 Matchers</a></li><li data-v-68e56674><a href="#生命週期" title="生命週期" data-v-68e56674>生命週期</a></li><li data-v-68e56674><a href="#參考資料" title="參考資料" data-v-68e56674>參考資料</a></li></ul> <div class="toc-tab" data-v-68e56674><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 icon sprite-icons" data-v-68e56674 data-v-68e56674><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-menu" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-menu" data-v-68e56674 data-v-68e56674></use></svg></div></section> <article class="mx-auto px-8 py-6 xl:px-16 dark:bg-dark-black" data-v-5c0fb0a4 data-v-0237b367><div class="info" data-v-5c0fb0a4><a href="/dev/Test" title="Back to Test" class="info-item info-link nuxt-link-active" data-v-5c0fb0a4><svg xmlns="http://www.w3.org/2000/svg" class="info-icon mr-2 icon sprite-icons" data-v-5c0fb0a4><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-folder-open" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-folder-open" data-v-5c0fb0a4></use></svg>
+      Test
+    </a> <div class="info-item mx-8" data-v-5c0fb0a4><svg xmlns="http://www.w3.org/2000/svg" class="info-icon mr-2 icon sprite-icons" data-v-5c0fb0a4 data-v-5c0fb0a4><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-calendar" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-calendar" data-v-5c0fb0a4 data-v-5c0fb0a4></use></svg>
+      15 Dec 2024
+    </div> <div class="info-item" data-v-5c0fb0a4><svg xmlns="http://www.w3.org/2000/svg" class="info-icon mr-2 icon sprite-icons" data-v-5c0fb0a4 data-v-5c0fb0a4><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-clock" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-clock" data-v-5c0fb0a4 data-v-5c0fb0a4></use></svg>
+      8 min read
+    </div></div> <div class="markdown" data-v-5c0fb0a4><h1 id="Vitest - 語法與常用 Matchers" title="Vitest - 語法與常用 Matchers">Vitest - 語法與常用 Matchers</h1>
+<h2 id="基本語法" title="基本語法"><a href="#基本語法">基本語法</a></h2>
+<h3>test / it</h3>
+<p>定義一個測試案例(test case)的最小單位，<code>it</code> 為 <code>test</code> 的別名，可替代使用。</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { expect, test } <span class="hljs-keyword">from</span> <span class="hljs-string">"vitest"</span>;
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"should work as expected"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(<span class="hljs-number">4</span>)).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">2</span>);
+});
+</code></pre>
+<h3>describe</h3>
+<p>會形成一個作用域(scope)，可以將同一個測試情境(test suite)的相關性測試案例(test case)集中起來。</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { describe, test, expect } <span class="hljs-keyword">from</span> <span class="hljs-string">"vitest"</span>;
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">"Input 組件"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">"沒有輸入文字前，應該顯示 xxx placeholder"</span>,  <span class="hljs-function">() =></span> {...});
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">"輸入文字後，搜尋按鈕要 enable"</span>,  <span class="hljs-function">() =></span> {...});
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">"輸入字數超過最大字數限制時，應該顯示錯誤訊息"</span>,  <span class="hljs-function">() =></span> {...});
+});
+</code></pre>
+<h3>vi</h3>
+<p>是 vitest 提供的輔助工具，可以提供模擬 Modules、函式、物件和時間等功能。</p>
+<blockquote>
+<p><strong>補充：</strong> vi 是對應 Jest 的 jest API。</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { expect, test, vi } <span class="hljs-keyword">from</span> <span class="hljs-string">"vitest"</span>;
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"Element render correctly"</span>, <span class="hljs-keyword">async</span> () => {
+  <span class="hljs-comment">// 等到 element 出現在頁面上，再對 element 做操作</span>
+  <span class="hljs-keyword">const</span> element = <span class="hljs-keyword">await</span> vi.<span class="hljs-title function_">waitUntil</span>(<span class="hljs-function">() =></span> <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">".element"</span>), {
+    <span class="hljs-attr">timeout</span>: <span class="hljs-number">500</span>, <span class="hljs-comment">// default is 1000</span>
+    <span class="hljs-attr">interval</span>: <span class="hljs-number">20</span> <span class="hljs-comment">// default is 50</span>
+  });
+
+  <span class="hljs-comment">// do something with the element</span>
+  <span class="hljs-title function_">expect</span>(element.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">".element-child"</span>)).<span class="hljs-title function_">toBeTruthy</span>();
+});
+</code></pre>
+<h2 id="<strong>斷言語法和常見</strong> Matchers" title="<strong>斷言語法和常見</strong> Matchers"><a href="#<strong>斷言語法和常見</strong> Matchers"><strong>斷言語法和常見</strong> Matchers</a></h2>
+<p>斷言(Assertion) 是在測試中用來檢查程式碼是否按預期運行的語句，驗證某個條件是否為真或假(true/false)。根據測試比對的東西類型，所搭配使用的 Matchers 選擇也不同。</p>
+<h3>expect</h3>
+<p>用於創建斷言，程式碼執行結果與斷言設定一致的話，就會通過測試，支援 <code>chai</code> 和 <code>Jest</code> 斷言寫法。</p>
+<pre class="hljs"><code><span class="hljs-title function_">expect</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(<span class="hljs-number">4</span>)).<span class="hljs-property">to</span>.<span class="hljs-title function_">equal</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// chai API</span>
+<span class="hljs-title function_">expect</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(<span class="hljs-number">4</span>)).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// jest API</span>
+</code></pre>
+<blockquote>
+<p><strong>補充：</strong></p>
+<p>如果想檢查 type，可使用 <code>expectTypeOf</code> 或 <code>assertType</code> ，或者使用 <code>expect</code> + <code>toBeTypeOf</code>。</p>
+<pre class="hljs"><code><span class="hljs-title function_">expectTypeOf</span>({ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }).<span class="hljs-property">toEqualTypeOf</span>&lt;{ <span class="hljs-attr">a</span>: <span class="hljs-built_in">number</span> }>();
+<span class="hljs-title function_">expectTypeOf</span>({ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }).<span class="hljs-title function_">toEqualTypeOf</span>({ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> });
+
+<span class="hljs-comment">// 泛型檢查</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">concat</span>(<span class="hljs-params">a: <span class="hljs-built_in">string</span>, b: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">concat</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">concat</span>(<span class="hljs-params">a: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+
+assertType&lt;<span class="hljs-built_in">string</span>>(<span class="hljs-title function_">concat</span>(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+assertType&lt;<span class="hljs-built_in">number</span>>(<span class="hljs-title function_">concat</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));
+
+<span class="hljs-comment">// expect + toBeTypeOf</span>
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"stock is type of string"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(<span class="hljs-string">"stock"</span>).<span class="hljs-title function_">toBeTypeOf</span>(<span class="hljs-string">"string"</span>);
+});
+</code></pre>
+</blockquote>
+<h3>純值</h3>
+<ul>
+<li>
+<p><strong><code>toBe</code></strong></p>
+<p>斷言值或斷言物件的 reference 是否相等。</p>
+<blockquote>
+<p><strong>補充：</strong></p>
+<ul>
+<li>
+<p>JavaScript 有浮點數精算問題，浮點數的計算要使用 <code>toBeCloseTo</code></p>
+</li>
+<li>
+<p>想檢查物件(Object)的結構是否相等，要使用 <code>toEqual</code></p>
+</li>
+</ul>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> stock = {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"apples"</span>,
+  <span class="hljs-attr">count</span>: <span class="hljs-number">13</span>
+};
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"stock has 13 apples"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(stock.<span class="hljs-property">type</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-string">"apples"</span>);
+  <span class="hljs-title function_">expect</span>(stock.<span class="hljs-property">count</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">13</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"stocks are the same"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-keyword">const</span> refStock = stock; <span class="hljs-comment">// same reference</span>
+
+  <span class="hljs-title function_">expect</span>(stock).<span class="hljs-title function_">toBe</span>(refStock);
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toBeDefined</code></strong> / <strong><code>toBeUndefined</code></strong></p>
+<p>斷言值是否為 undefined。</p>
+</li>
+<li>
+<p><strong><code>toBeNull</code></strong>、<strong><code>toBeNaN</code></strong></p>
+<p>斷言值是否為 null / NaN。</p>
+</li>
+<li>
+<p><strong><code>toBeTruthy</code></strong> / <strong><code>toBeFalsy</code></strong></p>
+<p>斷言值的 boolean 檢查。</p>
+<blockquote>
+<p><strong>補充：</strong><code>null</code>、<code>undefined</code>、<code>NaN</code>、<code>0</code>、<code>-0</code>、<code>0n</code>、<code>""</code> 和 <code>document.all</code> 皆為 falsy 的種類。</p>
+</blockquote>
+</li>
+<li>
+<p><strong><code>toMatch</code></strong></p>
+<p>斷言字符串的字串匹配和正則表達式檢查。</p>
+<pre class="hljs"><code><span class="hljs-title function_">test</span>(<span class="hljs-string">"top fruits"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(<span class="hljs-string">"top fruits include apple, orange and grape"</span>).<span class="hljs-title function_">toMatch</span>(<span class="hljs-regexp">/apple/</span>);
+  <span class="hljs-title function_">expect</span>(<span class="hljs-string">"applefruits"</span>).<span class="hljs-title function_">toMatch</span>(<span class="hljs-string">"fruit"</span>); <span class="hljs-comment">// toMatch also accepts a string</span>
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toBeGreaterThan</code></strong> / <strong><code>toBeGreaterThanOrEqual</code></strong> / <strong><code>toBeLessThan</code></strong> /<strong><code>toBeLessThanOrEqual</code></strong></p>
+<p>斷言值與接收值的大小比較。</p>
+</li>
+</ul>
+<h3>陣列</h3>
+<ul>
+<li>
+<p><strong><code>toContain</code></strong></p>
+<p>斷言值是否在陣列中。</p>
+<pre class="hljs"><code><span class="hljs-title function_">test</span>(<span class="hljs-string">"the fruit list contains orange"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(<span class="hljs-title function_">getAllFruits</span>()).<span class="hljs-title function_">toContain</span>(<span class="hljs-string">"orange"</span>);
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toContainEqual</code></strong></p>
+<p>斷言物件是否在陣列中，物件結構和值必須完全相等(會遞迴比較)。</p>
+<pre class="hljs"><code><span class="hljs-title function_">test</span>(<span class="hljs-string">"apple available"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(<span class="hljs-title function_">getFruitStock</span>()).<span class="hljs-title function_">toContainEqual</span>({ <span class="hljs-attr">fruit</span>: <span class="hljs-string">"apple"</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">5</span> });
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toMatchObject</code></strong></p>
+<p>斷言物件是否有匹配的到另一個物件的部份屬性。</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> johnInvoice = {
+  <span class="hljs-attr">customer</span>: {
+    <span class="hljs-attr">first_name</span>: <span class="hljs-string">"John"</span>,
+    <span class="hljs-attr">last_name</span>: <span class="hljs-string">"Doe"</span>
+  },
+  <span class="hljs-attr">items</span>: [
+    {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"apples"</span>,
+      <span class="hljs-attr">quantity</span>: <span class="hljs-number">10</span>
+    },
+    {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"oranges"</span>,
+      <span class="hljs-attr">quantity</span>: <span class="hljs-number">5</span>
+    }
+  ]
+};
+
+<span class="hljs-keyword">const</span> johnDetails = {
+  <span class="hljs-attr">customer</span>: {
+    <span class="hljs-attr">first_name</span>: <span class="hljs-string">"John"</span>,
+    <span class="hljs-attr">last_name</span>: <span class="hljs-string">"Doe"</span>
+  }
+};
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"invoice has john personal details"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(johnInvoice).<span class="hljs-title function_">toMatchObject</span>(johnDetails);
+});
+</code></pre>
+<blockquote>
+<p><strong>補充：</strong></p>
+<p><code>toMatchObject</code> 也可以接收陣列，用來檢查兩個陣列中的元素數量是否相等。</p>
+<pre class="hljs"><code><span class="hljs-title function_">test</span>(<span class="hljs-string">"the number of elements must match exactly"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-comment">// Assert that an array of object matches</span>
+  <span class="hljs-title function_">expect</span>([{ <span class="hljs-attr">foo</span>: <span class="hljs-string">"bar"</span> }, { <span class="hljs-attr">baz</span>: <span class="hljs-number">1</span> }]).<span class="hljs-title function_">toMatchObject</span>([
+    { <span class="hljs-attr">foo</span>: <span class="hljs-string">"bar"</span> },
+    { <span class="hljs-attr">baz</span>: <span class="hljs-number">1</span> }
+  ]);
+});
+</code></pre>
+</blockquote>
+</li>
+<li>
+<p><strong><code>toHaveLength</code></strong></p>
+<p>檢查字串、陣列的長度。</p>
+</li>
+</ul>
+<h3>物件</h3>
+<ul>
+<li>
+<p><strong><code>toEqual</code></strong></p>
+<p>檢查斷言物件的值與接收到的物件的值是否相同結構(會遞迴比較)。</p>
+<blockquote>
+<p>**補充：**如果物件結構裡面，欄位的值連出現 undefined 都要嚴格相等比較時，要選擇 <code>toStrictEqual</code>。</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-comment">// toEqual 與 toBe 比較</span>
+<span class="hljs-keyword">const</span> stockBill = {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"apples"</span>,
+  <span class="hljs-attr">count</span>: <span class="hljs-number">13</span>
+};
+
+<span class="hljs-keyword">const</span> stockMary = {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"apples"</span>,
+  <span class="hljs-attr">count</span>: <span class="hljs-number">13</span>
+};
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"stocks have the same properties"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(stockBill).<span class="hljs-title function_">toEqual</span>(stockMary);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"stocks are not the same"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>(stockBill).<span class="hljs-property">not</span>.<span class="hljs-title function_">toBe</span>(stockMary);
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toStrictEqual</code></strong></p>
+<p>檢查斷言物件的值與接收到的物件的值是否相同結構和值(會遞迴比較)。</p>
+<pre class="hljs"><code><span class="hljs-comment">// toStrictEqual 與 toEqual 比較</span>
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"structurally the same, but semantically different"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">expect</span>({ <span class="hljs-attr">a</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> }).<span class="hljs-title function_">toEqual</span>({ <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> });
+  <span class="hljs-title function_">expect</span>({ <span class="hljs-attr">a</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> }).<span class="hljs-property">not</span>.<span class="hljs-title function_">toStrictEqual</span>({ <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> });
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toHaveProperty</code></strong></p>
+<p>斷言物件是否有包含有特定的 key，第二個可選參數可傳入該 key 預期的值(會遞迴比較)。</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> invoice = {
+  <span class="hljs-attr">isActive</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"P.O"</span>: <span class="hljs-string">"12345"</span>,
+  <span class="hljs-attr">customer</span>: {
+    <span class="hljs-attr">first_name</span>: <span class="hljs-string">"John"</span>,
+    <span class="hljs-attr">last_name</span>: <span class="hljs-string">"Doe"</span>,
+    <span class="hljs-attr">location</span>: <span class="hljs-string">"China"</span>
+  },
+  <span class="hljs-attr">total_amount</span>: <span class="hljs-number">5000</span>,
+  <span class="hljs-attr">items</span>: [
+    {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"apples"</span>,
+      <span class="hljs-attr">quantity</span>: <span class="hljs-number">10</span>
+    },
+    {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"oranges"</span>,
+      <span class="hljs-attr">quantity</span>: <span class="hljs-number">5</span>
+    }
+  ]
+};
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"John Doe Invoice"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-comment">// 純檢查 key 值是否存在</span>
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"isActive"</span>);
+  <span class="hljs-comment">// 檢查 key 和 value</span>
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"total_amount"</span>, <span class="hljs-number">5000</span>);
+
+  <span class="hljs-comment">// 使用 `.`，取得物件底下的 key 和該 value</span>
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"customer.first_name"</span>);
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"customer.last_name"</span>, <span class="hljs-string">"Doe"</span>);
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-property">not</span>.<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"customer.location"</span>, <span class="hljs-string">"India"</span>);
+
+  <span class="hljs-comment">// Array key 取法，可以用 array[index] 或 [keyPath]</span>
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"items[0].type"</span>, <span class="hljs-string">"apples"</span>);
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>(<span class="hljs-string">"items.0.type"</span>, <span class="hljs-string">"apples"</span>);
+
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>([<span class="hljs-string">"items"</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"type"</span>], <span class="hljs-string">"apples"</span>);
+  <span class="hljs-title function_">expect</span>(invoice).<span class="hljs-title function_">toHaveProperty</span>([<span class="hljs-string">"items"</span>, <span class="hljs-string">"0"</span>, <span class="hljs-string">"type"</span>], <span class="hljs-string">"apples"</span>); <span class="hljs-comment">// string notation also works</span>
+});
+</code></pre>
+</li>
+</ul>
+<h3>函式</h3>
+<ul>
+<li>
+<p><strong><code>toHaveReturnedWith</code></strong></p>
+<p>斷言函式至少被呼叫一次，並且成功返回帶有特定參數的值，需要將一個 spy 函式傳遞給 expect。</p>
+<pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {
+  <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">"add function"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">it</span>(<span class="hljs-string">"should return the correct sum"</span>, <span class="hljs-function">() =></span> {
+    <span class="hljs-comment">// 創建一個間諜函數</span>
+    <span class="hljs-keyword">const</span> spy = vi.<span class="hljs-title function_">fn</span>(add);
+
+    <span class="hljs-title function_">spy</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+
+    <span class="hljs-title function_">expect</span>(spy).<span class="hljs-title function_">toHaveReturnedWith</span>(<span class="hljs-number">3</span>);
+  });
+});
+</code></pre>
+</li>
+<li>
+<p><strong><code>toHaveBeenCalled</code></strong></p>
+<p>斷言函式函式至少被呼叫一次，需要將一個 spy 函式傳遞給 expect。</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> market = {
+  <span class="hljs-title function_">buy</span>(<span class="hljs-params">subject: <span class="hljs-built_in">string</span>, amount: <span class="hljs-built_in">number</span></span>) { ... },
+}
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">'spy function'</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-keyword">const</span> buySpy = vi.<span class="hljs-title function_">spyOn</span>(market, <span class="hljs-string">'buy'</span>)
+
+  <span class="hljs-title function_">expect</span>(buySpy).<span class="hljs-property">not</span>.<span class="hljs-title function_">toHaveBeenCalled</span>()
+
+  market.<span class="hljs-title function_">buy</span>(<span class="hljs-string">'apples'</span>, <span class="hljs-number">10</span>)
+
+  <span class="hljs-title function_">expect</span>(buySpy).<span class="hljs-title function_">toHaveBeenCalled</span>()
+})
+</code></pre>
+</li>
+</ul>
+<h3>Error</h3>
+<ul>
+<li>
+<p><strong><code>toThrowError</code></strong></p>
+<p>斷言函式在被調用時是否會拋出錯誤，別名可用 <code>toThrow</code>，expect 裡面<strong>必須包裝成一個函式</strong>。</p>
+<pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span></span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">'pineapples'</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Pineapples are not in stock'</span>)
+  }
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">'throws on pineapples'</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-comment">//  error msg 必須包含 stock 字串</span>
+  <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-string">'pineapples'</span>)).<span class="hljs-title function_">toThrowError</span>(<span class="hljs-regexp">/stock/</span>)
+  <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-string">'pineapples'</span>)).<span class="hljs-title function_">toThrowError</span>(<span class="hljs-string">'stock'</span>)
+
+   <span class="hljs-comment">//  利用正則表達式檢查 error msg 是否完全相等</span>
+  <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-string">'pineapples'</span>)).<span class="hljs-title function_">toThrowError</span>(
+    <span class="hljs-regexp">/^Pineapples are not in stock$/</span>
+  )
+
+  <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-string">'pineapples'</span>)).<span class="hljs-title function_">toThrowError</span>(
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Pineapples are not in stock'</span>),
+  )
+  <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getFruitStock</span>(<span class="hljs-string">'pineapples'</span>)).<span class="hljs-title function_">toThrowError</span>(expect.<span class="hljs-title function_">objectContaining</span>({
+    <span class="hljs-attr">message</span>: <span class="hljs-string">'Pineapples are not in stock'</span>,
+  }))
+})
+</code></pre>
+<p>如果是非同步函式，需要搭配 <code>rejects</code>：</p>
+<pre class="hljs"><code><span class="hljs-keyword">function</span> <span class="hljs-title function_">getAsyncFruitStock</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">"empty"</span>));
+}
+
+<span class="hljs-comment">// 非同步因為是回傳 promise，所以需要 async / await</span>
+<span class="hljs-title function_">test</span>(<span class="hljs-string">"throws on pineapples"</span>, <span class="hljs-keyword">async</span> () => {
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =></span> <span class="hljs-title function_">getAsyncFruitStock</span>()).<span class="hljs-property">rejects</span>.<span class="hljs-title function_">toThrowError</span>(<span class="hljs-string">"empty"</span>);
+});
+</code></pre>
+</li>
+</ul>
+<h2 id="生命週期" title="生命週期"><a href="#生命週期">生命週期</a></h2>
+<p>下面這些 API 可以掛鉤到測試的生命週期，<strong>避免重複的前置準備和後續清理</strong>。</p>
+<p>執行範圍會根據撰寫所在的範疇(context)，如果是在 top-level 使用，則適用於整個文件；如果在 describe 區塊內使用，則適用於區塊內測試。</p>
+<pre class="hljs"><code><span class="hljs-title function_">beforeAll</span>(<span class="hljs-function">() =></span> {
+  <span class="hljs-comment">// 在所有測試前建立一次性的測試環境</span>
+  db = <span class="hljs-title function_">initializeDatabase</span>();
+});
+
+<span class="hljs-title function_">afterAll</span>(<span class="hljs-function">() =></span> {
+  <span class="hljs-comment">// 在所有測試後清理測試環境</span>
+  db.<span class="hljs-title function_">close</span>();
+});
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">"Database tests"</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">() =></span> {
+    <span class="hljs-comment">// 在每個測試前重置數據庫</span>
+    db.<span class="hljs-title function_">reset</span>();
+  });
+
+  <span class="hljs-title function_">afterEach</span>(<span class="hljs-function">() =></span> {
+    <span class="hljs-comment">// 在每個測試後清理數據庫</span>
+    db.<span class="hljs-title function_">cleanup</span>();
+  });
+
+  <span class="hljs-title function_">it</span>(<span class="hljs-string">"should insert a record"</span>, <span class="hljs-function">() =></span> {
+    db.<span class="hljs-title function_">insert</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Test"</span> });
+    <span class="hljs-title function_">expect</span>(db.<span class="hljs-title function_">find</span>(<span class="hljs-number">1</span>)).<span class="hljs-title function_">toEqual</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Test"</span> });
+  });
+
+  <span class="hljs-title function_">it</span>(<span class="hljs-string">"should delete a record"</span>, <span class="hljs-function">() =></span> {
+    db.<span class="hljs-title function_">insert</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">"Test"</span> });
+    db.<span class="hljs-title function_">delete</span>(<span class="hljs-number">1</span>);
+    <span class="hljs-title function_">expect</span>(db.<span class="hljs-title function_">find</span>(<span class="hljs-number">1</span>)).<span class="hljs-title function_">toBeNull</span>();
+  });
+});
+</code></pre>
+<h3><strong>beforeEach</strong></h3>
+<p>在當前範疇(context)的每個測試執行前呼叫。<code>beforeEach</code> 還接受一個 optional 的清理函式（相當於 <code>afterEach</code>）。</p>
+<p>適用情境：</p>
+<p>在每個測試執行前需要進行一些重複的設置工作，例如：初始化數據庫連接、設置測試數據、重置變數等。</p>
+<pre class="hljs"><code><span class="hljs-title function_">beforeEach</span>(<span class="hljs-keyword">async</span> () => {
+  <span class="hljs-comment">// 每個測試前都會執行</span>
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">prepareSomething</span>();
+
+  <span class="hljs-comment">// 每個測試後都會執行</span>
+  <span class="hljs-comment">// clean up function</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> () => {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">resetSomething</span>();
+  };
+});
+</code></pre>
+<h3><strong>afterEach</strong></h3>
+<p>在當前範疇(context)的每個測試執行後呼叫。</p>
+<p>適用情境：</p>
+<p>在每個測試執行後需要進行一些清理工作，例如：清理數據庫、重置全局狀態、釋放資源等。</p>
+<h3><strong>beforeAll</strong></h3>
+<p>在當前範疇(context)的全部測試執行前呼叫。<code>beforeAll</code> 也還接受一個 optional 的清理函式（相當於 <code>afterAll</code>）。</p>
+<p>適用情境：</p>
+<p>在所有測試執行前需要進行一次性的設置工作，例如：建立一次性的測試環境、載入配置文件、初始化外部服務等。</p>
+<h3><strong>afterAll</strong></h3>
+<p>在當前範疇(context)的全部測試執行後呼叫。</p>
+<p>適用情境：</p>
+<p>在所有測試執行後需要進行一次性的清理工作，例如：釋放全局資源、關閉伺服器、清理測試環境等。</p>
+<h2 id="<strong>參考資料</strong>" title="<strong>參考資料</strong>"><a href="#<strong>參考資料</strong>"><strong>參考資料</strong></a></h2>
+<ul>
+<li><a href="https://vitest.dev/api/" target="_blank" rel="noreferrer noopener">Vitest API</a></li>
+<li><a href="https://www.youtube.com/watch?v=FDEf3iWEgFI" target="_blank" rel="noreferrer noopener">Fast Unit Testing With Vitest</a></li>
+</ul>
+</div> <div class="flex flex-wrap items-center mt-4" data-v-5c0fb0a4><svg xmlns="http://www.w3.org/2000/svg" class="info-icon mr-1 icon sprite-icons" data-v-5c0fb0a4 data-v-5c0fb0a4><use href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-tag" xlink:href="/_nuxt/4cda34de928b58fed6e3d333f053843a.svg#i-tag" data-v-5c0fb0a4 data-v-5c0fb0a4></use></svg> <span class="tag" data-v-66ee7d80 data-v-5c0fb0a4>Test</span><span class="tag" data-v-66ee7d80 data-v-5c0fb0a4>Vitest</span></div> <div class="flex flex-wrap justify-between mt-4 text-sm italic text-dark-gray" data-v-5c0fb0a4><div data-v-5c0fb0a4>Published on 15 Dec 2024</div> <div data-v-5c0fb0a4>Updated on 15 Dec 2024</div></div></article></main> <footer data-v-301919f7>Copyright © 2024 JennieSH</footer></div></div></div><script defer src="/_nuxt/static/1734243485/dev/Test/vitest-matchers/state.js"></script><script src="/_nuxt/107c79d.js" defer></script><script src="/_nuxt/8b51193.js" defer></script><script src="/_nuxt/8e59a34.js" defer></script><script src="/_nuxt/6a6c73d.js" defer></script><script src="/_nuxt/3016af5.js" defer></script><script src="/_nuxt/8994050.js" defer></script>
+  </body>
+</html>
