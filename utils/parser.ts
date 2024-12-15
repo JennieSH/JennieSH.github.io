@@ -99,7 +99,7 @@ const processHtml = (
 
   subTitleList.forEach((title) => {
     const titleStr = title.replace(/<h2>|<\/h2>/g, "");
-    const tocTitleStr = titleStr.replace(/<\/?(s|a)>/g, "");
+    const tocTitleStr = titleStr.replace(/<\/?(s|a|strong)>/g, "");
 
     toc.subtitles.push(tocTitleStr);
     htmlContent = htmlContent.replace(
@@ -133,7 +133,7 @@ const getWordCount = (markdownText: string): number => {
  */
 const calculateReadingTime = (
   wordCount: number,
-  wordsPerMinute: number = 250
+  wordsPerMinute: number = 300
 ): number => Math.ceil(wordCount / wordsPerMinute);
 
 /**
