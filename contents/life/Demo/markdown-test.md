@@ -1,5 +1,5 @@
 ---
-title: "Mardown Test"
+title: "Markdown Test"
 fileName: "markdown-test"
 description: Mardown 功能測試，裡面無實質內容。
 createdAt: 2020-11-11
@@ -9,7 +9,7 @@ tags:
   - test
 ---
 
-# Mardown 功能測試
+# Markdown 功能測試
 
 ## Code
 
