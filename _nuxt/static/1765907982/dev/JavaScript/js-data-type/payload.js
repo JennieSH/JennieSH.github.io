@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/JavaScript/js-data-type", {data:[{}],fetch:{},mutations:void 0});

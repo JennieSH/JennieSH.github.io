@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/dev/Database/pgpass-dbeaver", {data:[{}],fetch:{},mutations:void 0});
