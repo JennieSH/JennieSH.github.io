@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/dev/Network/web-attack", {data:[{}],fetch:{},mutations:void 0});
