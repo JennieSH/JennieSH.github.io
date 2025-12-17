@@ -186,7 +186,7 @@ $flutter run
 
 點選右邊 ▶，就可以開啟 Emulator ～
 
-![image](https://hackmd.io/_uploads/ByXxF897R.png =300x)
+![image](https://hackmd.io/_uploads/ByXxF897R.png)
 
 ### Step4. 同意 SDK package licenses
 
