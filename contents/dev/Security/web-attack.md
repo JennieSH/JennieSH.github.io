@@ -5,10 +5,10 @@ description: "常見網頁攻擊分享"
 createdAt: 2025-06-17
 updatedAt: 2025-06-17
 tags:
-  - Network
+  - security
 ---
 
-###### tags: `Network`
+###### tags: `security`
 
 # [Note] 常見的 Web Attack
 
